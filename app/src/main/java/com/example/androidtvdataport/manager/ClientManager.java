@@ -9,10 +9,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Handler;
 
 public class ClientManager {
     private static final String TAG = "ClientManager";
@@ -22,7 +20,6 @@ public class ClientManager {
     private static ClientManager sInstance;
 
     private ServerSocket mServerSocket;
-    private Socket socket;
     private ExecutorService mExecutorService;
     private OnMessageReceivedListener mMessageReceivedListener;
 
@@ -45,42 +42,10 @@ public class ClientManager {
                     mServerSocket = new ServerSocket(SERVER_PORT);
                     Log.d(TAG, "Server started on port: " + SERVER_PORT);
                     while (!mServerSocket.isClosed()) {
-                        socket = mServerSocket.accept();
+                        Socket socket = mServerSocket.accept();
                         Log.d(TAG, "Client connected: " + socket.getInetAddress());
-                        try {
-                            OutputStream outputStream = socket.getOutputStream();
-                            InputStream inputStream = socket.getInputStream();
-                            new Thread(new ReadTask(inputStream)).start();
-                            SimpleMessageOuterClass.SimpleMessage message = SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build();
-                            message.writeDelimitedTo(outputStream);
-                            outputStream.flush();
-                            Log.d("Sent", "Closed:" + mServerSocket.isClosed());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        Log.d("Sent", "Closed:" + mServerSocket.isClosed());
-
-//                        new Thread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                try {
-//                                    Thread.sleep(5000);
-////                                    sendMessage(SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build());
-//                                    try (OutputStream outputStream = socket.getOutputStream()) {
-//                                        SimpleMessageOuterClass.SimpleMessage message = SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build();
-//                                        message.writeDelimitedTo(outputStream);
-//                                        outputStream.flush();
-//                                    } catch (IOException e) {
-//                                        e.printStackTrace();
-//                                    }
-//                                    Log.d("Send", "Sent msg");
-//                                } catch (InterruptedException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        }).start();
+                        handleClientConnection(socket);
                     }
-
                 } catch (IOException e) {
                     Log.e(TAG, "Error starting server", e);
                 }
@@ -88,18 +53,41 @@ public class ClientManager {
         });
     }
 
-    public void sendMessage(final SimpleMessageOuterClass.SimpleMessage message) {
+    private void handleClientConnection(Socket socket) {
         mExecutorService.execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    if (mServerSocket == null || mServerSocket.isClosed()) {
-                        Log.e(TAG, "Server socket is not initialized or closed");
-                        return;
+                    OutputStream outputStream = socket.getOutputStream();
+                    InputStream inputStream = socket.getInputStream();
+
+                    // Start threads to read from and write to the socket
+                    new Thread(new ReadTask(inputStream)).start();
+
+                    //send message to client every 5 seconds
+                    while (true) {
+                        Thread.sleep(5000);
+                        sendMessage(outputStream, SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build());
                     }
-//                    Socket socket = mServerSocket.accept();
-//                    new Thread(new WriteTask(socket, message)).start();
-                } catch (Exception e) {
+
+                } catch (IOException e) {
+                    Log.e(TAG, "Error handling client connection", e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
+    public void sendMessage(OutputStream outputStream, final SimpleMessageOuterClass.SimpleMessage message) {
+        mExecutorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    message.writeDelimitedTo(outputStream);
+                    outputStream.flush();
+                    Log.d(TAG, "Message sent: " + message.getMessage());
+                } catch (IOException e) {
                     Log.e(TAG, "Error sending message", e);
                 }
             }
@@ -109,8 +97,8 @@ public class ClientManager {
     class ReadTask implements Runnable {
         private InputStream inputStream;
 
-        public ReadTask(InputStream i) {
-            this.inputStream = i;
+        public ReadTask(InputStream inputStream) {
+            this.inputStream = inputStream;
         }
 
         @Override
@@ -119,31 +107,14 @@ public class ClientManager {
                 while (true) {
                     SimpleMessageOuterClass.SimpleMessage message = SimpleMessageOuterClass.SimpleMessage.parseDelimitedFrom(inputStream);
                     if (message != null) {
-                        System.out.println("Received: " + message.getMessage());
+                        Log.d(TAG, "Received: " + message.getMessage());
+                        if (mMessageReceivedListener != null) {
+                            mMessageReceivedListener.onMessageReceived(message);
+                        }
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    class WriteTask implements Runnable {
-        private OutputStream outputStream;
-        private SimpleMessageOuterClass.SimpleMessage message;
-
-        public WriteTask(OutputStream outputStream, SimpleMessageOuterClass.SimpleMessage message) {
-            this.outputStream = outputStream;
-            this.message = message;
-        }
-
-        @Override
-        public void run() {
-            try {
-                    message.writeDelimitedTo(outputStream);
-                    outputStream.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
+                Log.e(TAG, "Error reading message", e);
             }
         }
     }
@@ -152,7 +123,7 @@ public class ClientManager {
         mMessageReceivedListener = listener;
     }
 
-    interface OnMessageReceivedListener {
+    public interface OnMessageReceivedListener {
         void onMessageReceived(SimpleMessageOuterClass.SimpleMessage message);
     }
 }
