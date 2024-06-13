@@ -67,7 +67,7 @@ public class ClientManager {
                     //send message to client every 5 seconds
                     while (true) {
                         Thread.sleep(5000);
-                        sendMessage(outputStream, SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build());
+                        sendMessage(outputStream, SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Test message").build());
                     }
 
                 } catch (IOException e) {
