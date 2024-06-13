@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.androidtvdataport.manager.ClientManager;
+import com.example.androidtvdataport.message.SimpleMessageOuterClass;
 
 /*
  * Main Activity class that loads {@link MainFragment}.
@@ -23,6 +24,18 @@ public class MainActivity extends FragmentActivity {
 
         ClientManager manager = ClientManager.getInstance();
         manager.start();
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                    manager.sendMessage(SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 //        manager.setOnMessageReceivedListener(new ClientManager.OnMessageReceivedListener() {
 //            @Override
 //            public void onMessageReceived(String message) {
