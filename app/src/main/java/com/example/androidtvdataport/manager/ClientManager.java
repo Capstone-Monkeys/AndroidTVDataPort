@@ -3,7 +3,6 @@ package com.example.androidtvdataport.manager;
 import android.util.Log;
 
 import com.example.androidtvdataport.message.SimpleMessageOuterClass;
-import com.example.androidtvdataport.message.SimpleMessageOuterClass.SimpleMessage;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +22,7 @@ public class ClientManager {
     private static ClientManager sInstance;
 
     private ServerSocket mServerSocket;
+    private Socket socket;
     private ExecutorService mExecutorService;
     private OnMessageReceivedListener mMessageReceivedListener;
 
@@ -45,10 +45,42 @@ public class ClientManager {
                     mServerSocket = new ServerSocket(SERVER_PORT);
                     Log.d(TAG, "Server started on port: " + SERVER_PORT);
                     while (!mServerSocket.isClosed()) {
-                        Socket socket = mServerSocket.accept();
+                        socket = mServerSocket.accept();
                         Log.d(TAG, "Client connected: " + socket.getInetAddress());
-                        new Thread(new ReadTask(socket)).start();
+                        try {
+                            OutputStream outputStream = socket.getOutputStream();
+                            InputStream inputStream = socket.getInputStream();
+                            new Thread(new ReadTask(inputStream)).start();
+                            SimpleMessageOuterClass.SimpleMessage message = SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build();
+                            message.writeDelimitedTo(outputStream);
+                            outputStream.flush();
+                            Log.d("Sent", "Closed:" + mServerSocket.isClosed());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        Log.d("Sent", "Closed:" + mServerSocket.isClosed());
+
+//                        new Thread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                try {
+//                                    Thread.sleep(5000);
+////                                    sendMessage(SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build());
+//                                    try (OutputStream outputStream = socket.getOutputStream()) {
+//                                        SimpleMessageOuterClass.SimpleMessage message = SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build();
+//                                        message.writeDelimitedTo(outputStream);
+//                                        outputStream.flush();
+//                                    } catch (IOException e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                    Log.d("Send", "Sent msg");
+//                                } catch (InterruptedException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                        }).start();
                     }
+
                 } catch (IOException e) {
                     Log.e(TAG, "Error starting server", e);
                 }
@@ -56,7 +88,7 @@ public class ClientManager {
         });
     }
 
-    public void sendMessage(final SimpleMessage message) {
+    public void sendMessage(final SimpleMessageOuterClass.SimpleMessage message) {
         mExecutorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -65,9 +97,9 @@ public class ClientManager {
                         Log.e(TAG, "Server socket is not initialized or closed");
                         return;
                     }
-                    Socket socket = mServerSocket.accept();
-                    new Thread(new WriteTask(socket, message)).start();
-                } catch (IOException e) {
+//                    Socket socket = mServerSocket.accept();
+//                    new Thread(new WriteTask(socket, message)).start();
+                } catch (Exception e) {
                     Log.e(TAG, "Error sending message", e);
                 }
             }
@@ -75,15 +107,15 @@ public class ClientManager {
     }
 
     class ReadTask implements Runnable {
-        private Socket socket;
+        private InputStream inputStream;
 
-        public ReadTask(Socket socket) {
-            this.socket = socket;
+        public ReadTask(InputStream i) {
+            this.inputStream = i;
         }
 
         @Override
         public void run() {
-            try (InputStream inputStream = socket.getInputStream()) {
+            try {
                 while (true) {
                     SimpleMessageOuterClass.SimpleMessage message = SimpleMessageOuterClass.SimpleMessage.parseDelimitedFrom(inputStream);
                     if (message != null) {
@@ -97,17 +129,17 @@ public class ClientManager {
     }
 
     class WriteTask implements Runnable {
-        private Socket socket;
-        private SimpleMessage message;
+        private OutputStream outputStream;
+        private SimpleMessageOuterClass.SimpleMessage message;
 
-        public WriteTask(Socket socket, SimpleMessage message) {
-            this.socket = socket;
+        public WriteTask(OutputStream outputStream, SimpleMessageOuterClass.SimpleMessage message) {
+            this.outputStream = outputStream;
             this.message = message;
         }
 
         @Override
         public void run() {
-            try (OutputStream outputStream = socket.getOutputStream()) {
+            try {
                     message.writeDelimitedTo(outputStream);
                     outputStream.flush();
             } catch (IOException e) {
@@ -121,6 +153,6 @@ public class ClientManager {
     }
 
     interface OnMessageReceivedListener {
-        void onMessageReceived(SimpleMessage message);
+        void onMessageReceived(SimpleMessageOuterClass.SimpleMessage message);
     }
 }

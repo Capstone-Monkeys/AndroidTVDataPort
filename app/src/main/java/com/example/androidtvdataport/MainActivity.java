@@ -25,17 +25,6 @@ public class MainActivity extends FragmentActivity {
         ClientManager manager = ClientManager.getInstance();
         manager.start();
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5000);
-                    manager.sendMessage(SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
 //        manager.setOnMessageReceivedListener(new ClientManager.OnMessageReceivedListener() {
 //            @Override
 //            public void onMessageReceived(String message) {
