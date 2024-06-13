@@ -2,6 +2,7 @@ package com.example.androidtvdataport.manager;
 
 import android.util.Log;
 
+import com.example.androidtvdataport.message.SimpleMessageOuterClass;
 import com.example.androidtvdataport.message.SimpleMessageOuterClass.SimpleMessage;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Handler;
@@ -45,10 +47,7 @@ public class ClientManager {
                     while (!mServerSocket.isClosed()) {
                         Socket socket = mServerSocket.accept();
                         Log.d(TAG, "Client connected: " + socket.getInetAddress());
-                        mExecutorService.execute(new ReadTask(socket));
-                        mExecutorService.execute(new WriteTask(socket, SimpleMessage.newBuilder()
-                                .setMessage("Hello from server")
-                                .build()));
+                        new Thread(new ReadTask(socket)).start();
                     }
                 } catch (IOException e) {
                     Log.e(TAG, "Error starting server", e);
@@ -76,58 +75,43 @@ public class ClientManager {
     }
 
     class ReadTask implements Runnable {
-        private Socket mSocket;
+        private Socket socket;
 
         public ReadTask(Socket socket) {
-            mSocket = socket;
+            this.socket = socket;
         }
 
         @Override
         public void run() {
-            try (InputStream is = mSocket.getInputStream()) {
-                while (!mSocket.isClosed()) {
-                    SimpleMessage message = SimpleMessage.parseDelimitedFrom(is);
+            try (InputStream inputStream = socket.getInputStream()) {
+                while (true) {
+                    SimpleMessageOuterClass.SimpleMessage message = SimpleMessageOuterClass.SimpleMessage.parseDelimitedFrom(inputStream);
                     if (message != null) {
-                        if (mMessageReceivedListener != null) {
-                            mMessageReceivedListener.onMessageReceived(message);
-                        }
-                        Log.d(TAG, "Received message: " + message);
+                        System.out.println("Received: " + message.getMessage());
                     }
                 }
             } catch (IOException e) {
-                Log.e(TAG, "Error reading from client", e);
-            } finally {
-                try {
-                    mSocket.close();
-                } catch (IOException e) {
-                    Log.e(TAG, "Error closing socket", e);
-                }
+                e.printStackTrace();
             }
         }
     }
 
     class WriteTask implements Runnable {
-        private Socket mSocket;
-        private SimpleMessage mMessage;
+        private Socket socket;
+        private SimpleMessage message;
 
         public WriteTask(Socket socket, SimpleMessage message) {
-            mSocket = socket;
-            mMessage = message;
+            this.socket = socket;
+            this.message = message;
         }
 
         @Override
         public void run() {
-            try (OutputStream os = mSocket.getOutputStream()) {
-                mMessage.writeDelimitedTo(os);
-                os.flush();
+            try (OutputStream outputStream = socket.getOutputStream()) {
+                    message.writeDelimitedTo(outputStream);
+                    outputStream.flush();
             } catch (IOException e) {
-                Log.e(TAG, "Error writing to client", e);
-            } finally {
-                try {
-                    mSocket.close();
-                } catch (IOException e) {
-                    Log.e(TAG, "Error closing socket", e);
-                }
+                e.printStackTrace();
             }
         }
     }
