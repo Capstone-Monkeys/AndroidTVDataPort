@@ -36,4 +36,8 @@ dependencies {
     implementation(libs.glide)
 
     implementation("com.google.protobuf:protobuf-java:3.25.3")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
 }
