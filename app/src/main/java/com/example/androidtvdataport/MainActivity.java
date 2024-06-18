@@ -14,10 +14,11 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.main_browse_fragment, new MainFragment())
+                    .replace(R.id.main_browse_fragment, new BlankFragment())
                     .commitNow();
         }
 
+        // Mo server de lang nghe ket noi tu client
         ClientManager manager = ClientManager.getInstance();
         manager.start();
     }
