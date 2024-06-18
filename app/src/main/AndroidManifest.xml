@@ -18,6 +18,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTVDataPort">
         <activity
+            android:name=".AppLinkActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="coccoc"
+                    android:host="search" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:banner="@drawable/app_icon_your_company"
             android:exported="true"
@@ -29,6 +43,18 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+            <!-- Deep link intent filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Specify the deep link scheme -->
+                <data
+                    android:host="open"
+                    android:scheme="myapp" />
             </intent-filter>
         </activity>
         <activity

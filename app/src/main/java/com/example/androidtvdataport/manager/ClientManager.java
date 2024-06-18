@@ -2,17 +2,16 @@ package com.example.androidtvdataport.manager;
 
 import android.util.Log;
 
-import com.example.androidtvdataport.message.SimpleMessageOuterClass;
+import com.example.androidtvdataport.listener.BrowserDataListener;
+import com.example.androidtvdataport.message.BrowserData;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Handler;
 
 public class ClientManager {
     private static final String TAG = "ClientManager";
@@ -22,9 +21,9 @@ public class ClientManager {
     private static ClientManager sInstance;
 
     private ServerSocket mServerSocket;
-    private Socket socket;
-    private ExecutorService mExecutorService;
-    private OnMessageReceivedListener mMessageReceivedListener;
+    private final ExecutorService mExecutorService;
+    private InputStream mInputStream;
+    private OutputStream mOutputStream;
 
     private ClientManager() {
         mExecutorService = Executors.newCachedThreadPool();
@@ -38,121 +37,178 @@ public class ClientManager {
     }
 
     public void start() {
-        mExecutorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    mServerSocket = new ServerSocket(SERVER_PORT);
-                    Log.d(TAG, "Server started on port: " + SERVER_PORT);
-                    while (!mServerSocket.isClosed()) {
-                        socket = mServerSocket.accept();
-                        Log.d(TAG, "Client connected: " + socket.getInetAddress());
-                        try {
-                            OutputStream outputStream = socket.getOutputStream();
-                            InputStream inputStream = socket.getInputStream();
-                            new Thread(new ReadTask(inputStream)).start();
-                            SimpleMessageOuterClass.SimpleMessage message = SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build();
-                            message.writeDelimitedTo(outputStream);
-                            outputStream.flush();
-                            Log.d("Sent", "Closed:" + mServerSocket.isClosed());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        Log.d("Sent", "Closed:" + mServerSocket.isClosed());
-
-//                        new Thread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                try {
-//                                    Thread.sleep(5000);
-////                                    sendMessage(SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build());
-//                                    try (OutputStream outputStream = socket.getOutputStream()) {
-//                                        SimpleMessageOuterClass.SimpleMessage message = SimpleMessageOuterClass.SimpleMessage.newBuilder().setMessage("Hello hello").build();
-//                                        message.writeDelimitedTo(outputStream);
-//                                        outputStream.flush();
-//                                    } catch (IOException e) {
-//                                        e.printStackTrace();
-//                                    }
-//                                    Log.d("Send", "Sent msg");
-//                                } catch (InterruptedException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        }).start();
-                    }
-
-                } catch (IOException e) {
-                    Log.e(TAG, "Error starting server", e);
+        mExecutorService.execute(() -> {
+            try {
+                mServerSocket = new ServerSocket(SERVER_PORT);
+                Log.d(TAG, "Server started on port: " + SERVER_PORT);
+                while (!mServerSocket.isClosed()) {
+                    Socket socket = mServerSocket.accept();
+                    Log.d(TAG, "Client connected: " + socket.getInetAddress());
+                    handleClientConnection(socket);
                 }
+            } catch (IOException e) {
+                Log.e(TAG, "Error starting server", e);
             }
         });
     }
 
-    public void sendMessage(final SimpleMessageOuterClass.SimpleMessage message) {
-        mExecutorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (mServerSocket == null || mServerSocket.isClosed()) {
-                        Log.e(TAG, "Server socket is not initialized or closed");
-                        return;
+    private void handleClientConnection(Socket socket) {
+        mExecutorService.execute(() -> {
+            try {
+                mOutputStream = socket.getOutputStream();
+                mInputStream = socket.getInputStream();
+                BrowserDataListener listener = new BrowserDataListener(mInputStream, new BrowserDataListener.OnMessageReceivedListener() {
+                    @Override
+                    public void onRequestReceived(BrowserData.FetchDataRequest request) {
+                        Log.d(TAG, "Received request: " + request);
+                        processRequest(request);
                     }
-//                    Socket socket = mServerSocket.accept();
-//                    new Thread(new WriteTask(socket, message)).start();
-                } catch (Exception e) {
-                    Log.e(TAG, "Error sending message", e);
-                }
+
+                    @Override
+                    public void onResponseReceived(BrowserData.FetchDataResponse response) {
+                        Log.d(TAG, "Received response: " + response);
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Log.e(TAG, "Error: " + e);
+                    }
+                });
+                Thread listenerThread = new Thread(listener);
+                listenerThread.start();
+
+            } catch (Exception e) {
+                Log.e(TAG, "Error handling client connection", e);
             }
         });
     }
 
-    class ReadTask implements Runnable {
-        private InputStream inputStream;
-
-        public ReadTask(InputStream i) {
-            this.inputStream = i;
-        }
-
-        @Override
-        public void run() {
+    public void sendMessage(OutputStream outputStream, final BrowserData.WrapperMessage message) {
+        mExecutorService.execute(() -> {
             try {
-                while (true) {
-                    SimpleMessageOuterClass.SimpleMessage message = SimpleMessageOuterClass.SimpleMessage.parseDelimitedFrom(inputStream);
-                    if (message != null) {
-                        System.out.println("Received: " + message.getMessage());
-                    }
-                }
+                message.writeDelimitedTo(outputStream);
+                outputStream.flush();
+                Log.d(TAG, "Message sent: " + message);
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.e(TAG, "Error sending message", e);
             }
-        }
+        });
     }
 
-    class WriteTask implements Runnable {
-        private OutputStream outputStream;
-        private SimpleMessageOuterClass.SimpleMessage message;
-
-        public WriteTask(OutputStream outputStream, SimpleMessageOuterClass.SimpleMessage message) {
-            this.outputStream = outputStream;
-            this.message = message;
+    private void processRequest(BrowserData.FetchDataRequest request) {
+        BrowserData.WrapperMessage.Builder responseBuilder = BrowserData.WrapperMessage.newBuilder().setType(BrowserData.WrapperMessage.MessageType.RESPONSE);
+        BrowserData.FetchDataResponse.Builder response = BrowserData.FetchDataResponse.newBuilder();
+        // Process request
+        if (request.getFetchBookmarks()) {
+            String dummyBookmarkJson = createBookmarkDummy();
+            response.setBookmarks(dummyBookmarkJson);
         }
-
-        @Override
-        public void run() {
-            try {
-                    message.writeDelimitedTo(outputStream);
-                    outputStream.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (request.getFetchHistory()) {
+            String dummyHistoryJson = createHistoryDummy();
+            response.setHistory(dummyHistoryJson);
         }
+        responseBuilder.setResponse(response);
+        sendMessage(mOutputStream, responseBuilder.build());
     }
 
-    public void setOnMessageReceivedListener(OnMessageReceivedListener listener) {
-        mMessageReceivedListener = listener;
+    private String createHistoryDummy() {
+
+        return "[\n" +
+                "  {\n" +
+                "    \"title\": \"History Title Briana\",\n" +
+                "    \"url\": \"https://exampleGreen.com\",\n" +
+                "    \"timestamp\": 1621502400000\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"History Title Erickson\",\n" +
+                "    \"url\": \"https://exampleClements.com\",\n" +
+                "    \"timestamp\": 1621502400000\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"History Title Darlene\",\n" +
+                "    \"url\": \"https://exampleMathis.com\",\n" +
+                "    \"timestamp\": 1621502400000\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"History Title Myrna\",\n" +
+                "    \"url\": \"https://exampleCaldwell.com\",\n" +
+                "    \"timestamp\": 1621502400000\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"History Title Norman\",\n" +
+                "    \"url\": \"https://exampleMcknight.com\",\n" +
+                "    \"timestamp\": 1621502400000\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"History Title Fannie\",\n" +
+                "    \"url\": \"https://exampleCraft.com\",\n" +
+                "    \"timestamp\": 1621502400000\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"History Title Weaver\",\n" +
+                "    \"url\": \"https://exampleCarlson.com\",\n" +
+                "    \"timestamp\": 1621502400000\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"History Title Rosie\",\n" +
+                "    \"url\": \"https://exampleGraham.com\",\n" +
+                "    \"timestamp\": 1621502400000\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"History Title Gallegos\",\n" +
+                "    \"url\": \"https://exampleWood.com\",\n" +
+                "    \"timestamp\": 1621502400000\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"History Title Hannah\",\n" +
+                "    \"url\": \"https://exampleNicholson.com\",\n" +
+                "    \"timestamp\": 1621502400000\n" +
+                "  }\n" +
+                "]";
     }
 
-    interface OnMessageReceivedListener {
-        void onMessageReceived(SimpleMessageOuterClass.SimpleMessage message);
+    private String createBookmarkDummy() {
+        return "[\n" +
+                "  {\n" +
+                "    \"title\": \"Bookmark Title Kathrine\",\n" +
+                "    \"url\": \"https://exampleFarley.com\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"Bookmark Title Imogene\",\n" +
+                "    \"url\": \"https://exampleBowman.com\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"Bookmark Title Krista\",\n" +
+                "    \"url\": \"https://exampleNorman.com\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"Bookmark Title Albert\",\n" +
+                "    \"url\": \"https://exampleLewis.com\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"Bookmark Title Fulton\",\n" +
+                "    \"url\": \"https://exampleKinney.com\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"Bookmark Title Lambert\",\n" +
+                "    \"url\": \"https://exampleBeck.com\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"Bookmark Title Pierce\",\n" +
+                "    \"url\": \"https://exampleAllen.com\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"Bookmark Title Buck\",\n" +
+                "    \"url\": \"https://exampleEverett.com\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"Bookmark Title Josefina\",\n" +
+                "    \"url\": \"https://exampleBryant.com\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"title\": \"Bookmark Title Wilda\",\n" +
+                "    \"url\": \"https://exampleBarlow.com\"\n" +
+                "  }\n" +
+                "]";
     }
 }
