@@ -1,6 +1,9 @@
 package com.example.androidtvdataport.manager;
 
+import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.androidtvdataport.listener.BrowserDataListener;
 import com.example.androidtvdataport.message.BrowserData;
@@ -15,7 +18,7 @@ import java.util.concurrent.Executors;
 
 public class ClientManager {
     private static final String TAG = "ClientManager";
-    private static final int SERVER_PORT = 9866;
+    private static final int SERVER_PORT = 9867;
 
     // Singleton instance
     private static ClientManager sInstance;
@@ -24,6 +27,7 @@ public class ClientManager {
     private final ExecutorService mExecutorService;
     private InputStream mInputStream;
     private OutputStream mOutputStream;
+    private Context mContext;
 
     private ClientManager() {
         mExecutorService = Executors.newCachedThreadPool();
@@ -107,62 +111,76 @@ public class ClientManager {
             String dummyHistoryJson = createHistoryDummy();
             response.setHistory(dummyHistoryJson);
         }
+        Log.d(TAG, "Action code: " + request.hasActionCodeInject());
+        if (request.hasActionCodeInject()) {
+            // TODO: Handle action code
+            BrowserData.ActionCode actionCode = request.getActionCodeInject().getActionCode();
+            Handler handler = new Handler(mContext.getMainLooper());
+            handler.post(() -> {
+                Toast.makeText(mContext, "Action code: " + actionCode, Toast.LENGTH_SHORT).show();
+            });
+            response.setActionResponse(BrowserData.ActionResponse.newBuilder().setStatusCode(200).setMessage("OPENED CINEMA MODE").build());
+        }
         responseBuilder.setResponse(response);
         sendMessage(mOutputStream, responseBuilder.build());
     }
 
+    public void setContext(Context context) {
+        mContext = context;
+    }
     private String createHistoryDummy() {
 
         return "[\n" +
                 "  {\n" +
+                "    \"imageUrl\": \"https://cdn.coccoc.com/browser_images/thumbnail/android-tv/coc-coc-phim-truc-tuyen.png\",\n" +
                 "    \"title\": \"History Title Briana\",\n" +
                 "    \"url\": \"https://exampleGreen.com\",\n" +
-                "    \"timestamp\": 1621502400000\n" +
+                "    \"timestamp\": 1621502400001\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"title\": \"History Title Erickson\",\n" +
                 "    \"url\": \"https://exampleClements.com\",\n" +
-                "    \"timestamp\": 1621502400000\n" +
+                "    \"timestamp\": 1621502400002\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"title\": \"History Title Darlene\",\n" +
                 "    \"url\": \"https://exampleMathis.com\",\n" +
-                "    \"timestamp\": 1621502400000\n" +
+                "    \"timestamp\": 1621502400003\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"title\": \"History Title Myrna\",\n" +
                 "    \"url\": \"https://exampleCaldwell.com\",\n" +
-                "    \"timestamp\": 1621502400000\n" +
+                "    \"timestamp\": 1621502400004\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"title\": \"History Title Norman\",\n" +
                 "    \"url\": \"https://exampleMcknight.com\",\n" +
-                "    \"timestamp\": 1621502400000\n" +
+                "    \"timestamp\": 1621502400005\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"title\": \"History Title Fannie\",\n" +
                 "    \"url\": \"https://exampleCraft.com\",\n" +
-                "    \"timestamp\": 1621502400000\n" +
+                "    \"timestamp\": 1621502400006\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"title\": \"History Title Weaver\",\n" +
                 "    \"url\": \"https://exampleCarlson.com\",\n" +
-                "    \"timestamp\": 1621502400000\n" +
+                "    \"timestamp\": 1621502400007\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"title\": \"History Title Rosie\",\n" +
                 "    \"url\": \"https://exampleGraham.com\",\n" +
-                "    \"timestamp\": 1621502400000\n" +
+                "    \"timestamp\": 1621502400008\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"title\": \"History Title Gallegos\",\n" +
                 "    \"url\": \"https://exampleWood.com\",\n" +
-                "    \"timestamp\": 1621502400000\n" +
+                "    \"timestamp\": 1621502400009\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"title\": \"History Title Hannah\",\n" +
                 "    \"url\": \"https://exampleNicholson.com\",\n" +
-                "    \"timestamp\": 1621502400000\n" +
+                "    \"timestamp\": 1621502400010\n" +
                 "  }\n" +
                 "]";
     }
@@ -170,16 +188,19 @@ public class ClientManager {
     private String createBookmarkDummy() {
         return "[\n" +
                 "  {\n" +
+                "    \"imageUrl\": \"https://cdn.coccoc.com/browser_images/thumbnail/android-tv/coc-coc-phim-truc-tuyen.png\",\n" +
                 "    \"title\": \"Bookmark Title Kathrine\",\n" +
-                "    \"url\": \"https://exampleFarley.com\"\n" +
+                "    \"url\": \"https://facebook.com\"\n" +
                 "  },\n" +
                 "  {\n" +
+                "    \"imageUrl\": \"https://cdn.coccoc.com/browser_images/thumbnail/android-tv/coc-coc-phim-truc-tuyen.png\",\n" +
                 "    \"title\": \"Bookmark Title Imogene\",\n" +
-                "    \"url\": \"https://exampleBowman.com\"\n" +
+                "    \"url\": \"https://youtube.com\"\n" +
                 "  },\n" +
                 "  {\n" +
+                "    \"imageUrl\": \"https://cdn.coccoc.com/browser_images/thumbnail/android-tv/coc-coc-phim-truc-tuyen.png\",\n" +
                 "    \"title\": \"Bookmark Title Krista\",\n" +
-                "    \"url\": \"https://exampleNorman.com\"\n" +
+                "    \"url\": \"https://google.com\"\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"title\": \"Bookmark Title Albert\",\n" +

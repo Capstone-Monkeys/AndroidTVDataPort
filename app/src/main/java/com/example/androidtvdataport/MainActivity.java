@@ -20,6 +20,7 @@ public class MainActivity extends FragmentActivity {
 
         // Mo server de lang nghe ket noi tu client
         ClientManager manager = ClientManager.getInstance();
+        manager.setContext(this);
         manager.start();
     }
 }
