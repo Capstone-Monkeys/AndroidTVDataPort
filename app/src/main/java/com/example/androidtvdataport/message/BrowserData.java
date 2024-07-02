@@ -12,6 +12,655 @@ public final class BrowserData {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  /**
+   * Protobuf enum {@code ActionCode}
+   */
+  public enum ActionCode
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>OPEN_CINEMA_MODE = 0;</code>
+     */
+    OPEN_CINEMA_MODE(0),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>OPEN_CINEMA_MODE = 0;</code>
+     */
+    public static final int OPEN_CINEMA_MODE_VALUE = 0;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ActionCode valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static ActionCode forNumber(int value) {
+      switch (value) {
+        case 0: return OPEN_CINEMA_MODE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ActionCode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ActionCode> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ActionCode>() {
+            public ActionCode findValueByNumber(int number) {
+              return ActionCode.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return BrowserData.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final ActionCode[] VALUES = values();
+
+    public static ActionCode valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private ActionCode(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ActionCode)
+  }
+
+  public interface ActionCodeInjectOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ActionCodeInject)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Code to inject
+     * </pre>
+     *
+     * <code>.ActionCode action_code = 1;</code>
+     * @return The enum numeric value on the wire for actionCode.
+     */
+    int getActionCodeValue();
+    /**
+     * <pre>
+     * Code to inject
+     * </pre>
+     *
+     * <code>.ActionCode action_code = 1;</code>
+     * @return The actionCode.
+     */
+    BrowserData.ActionCode getActionCode();
+  }
+  /**
+   * <pre>
+   * Message to inject action code
+   * </pre>
+   *
+   * Protobuf type {@code ActionCodeInject}
+   */
+  public static final class ActionCodeInject extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ActionCodeInject)
+      ActionCodeInjectOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ActionCodeInject.newBuilder() to construct.
+    private ActionCodeInject(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ActionCodeInject() {
+      actionCode_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ActionCodeInject();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return BrowserData.internal_static_ActionCodeInject_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return BrowserData.internal_static_ActionCodeInject_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              BrowserData.ActionCodeInject.class, BrowserData.ActionCodeInject.Builder.class);
+    }
+
+    public static final int ACTION_CODE_FIELD_NUMBER = 1;
+    private int actionCode_;
+    /**
+     * <pre>
+     * Code to inject
+     * </pre>
+     *
+     * <code>.ActionCode action_code = 1;</code>
+     * @return The enum numeric value on the wire for actionCode.
+     */
+    @java.lang.Override public int getActionCodeValue() {
+      return actionCode_;
+    }
+    /**
+     * <pre>
+     * Code to inject
+     * </pre>
+     *
+     * <code>.ActionCode action_code = 1;</code>
+     * @return The actionCode.
+     */
+    @java.lang.Override public BrowserData.ActionCode getActionCode() {
+      @SuppressWarnings("deprecation")
+      BrowserData.ActionCode result = BrowserData.ActionCode.valueOf(actionCode_);
+      return result == null ? BrowserData.ActionCode.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (actionCode_ != BrowserData.ActionCode.OPEN_CINEMA_MODE.getNumber()) {
+        output.writeEnum(1, actionCode_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (actionCode_ != BrowserData.ActionCode.OPEN_CINEMA_MODE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, actionCode_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof BrowserData.ActionCodeInject)) {
+        return super.equals(obj);
+      }
+      BrowserData.ActionCodeInject other = (BrowserData.ActionCodeInject) obj;
+
+      if (actionCode_ != other.actionCode_) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ACTION_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + actionCode_;
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static BrowserData.ActionCodeInject parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static BrowserData.ActionCodeInject parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static BrowserData.ActionCodeInject parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static BrowserData.ActionCodeInject parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static BrowserData.ActionCodeInject parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static BrowserData.ActionCodeInject parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static BrowserData.ActionCodeInject parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static BrowserData.ActionCodeInject parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static BrowserData.ActionCodeInject parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static BrowserData.ActionCodeInject parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static BrowserData.ActionCodeInject parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static BrowserData.ActionCodeInject parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(BrowserData.ActionCodeInject prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message to inject action code
+     * </pre>
+     *
+     * Protobuf type {@code ActionCodeInject}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ActionCodeInject)
+        BrowserData.ActionCodeInjectOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return BrowserData.internal_static_ActionCodeInject_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return BrowserData.internal_static_ActionCodeInject_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                BrowserData.ActionCodeInject.class, BrowserData.ActionCodeInject.Builder.class);
+      }
+
+      // Construct using BrowserData.ActionCodeInject.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        actionCode_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return BrowserData.internal_static_ActionCodeInject_descriptor;
+      }
+
+      @java.lang.Override
+      public BrowserData.ActionCodeInject getDefaultInstanceForType() {
+        return BrowserData.ActionCodeInject.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public BrowserData.ActionCodeInject build() {
+        BrowserData.ActionCodeInject result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public BrowserData.ActionCodeInject buildPartial() {
+        BrowserData.ActionCodeInject result = new BrowserData.ActionCodeInject(this);
+        result.actionCode_ = actionCode_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof BrowserData.ActionCodeInject) {
+          return mergeFrom((BrowserData.ActionCodeInject)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(BrowserData.ActionCodeInject other) {
+        if (other == BrowserData.ActionCodeInject.getDefaultInstance()) return this;
+        if (other.actionCode_ != 0) {
+          setActionCodeValue(other.getActionCodeValue());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                actionCode_ = input.readEnum();
+
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+
+      private int actionCode_ = 0;
+      /**
+       * <pre>
+       * Code to inject
+       * </pre>
+       *
+       * <code>.ActionCode action_code = 1;</code>
+       * @return The enum numeric value on the wire for actionCode.
+       */
+      @java.lang.Override public int getActionCodeValue() {
+        return actionCode_;
+      }
+      /**
+       * <pre>
+       * Code to inject
+       * </pre>
+       *
+       * <code>.ActionCode action_code = 1;</code>
+       * @param value The enum numeric value on the wire for actionCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setActionCodeValue(int value) {
+        
+        actionCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Code to inject
+       * </pre>
+       *
+       * <code>.ActionCode action_code = 1;</code>
+       * @return The actionCode.
+       */
+      @java.lang.Override
+      public BrowserData.ActionCode getActionCode() {
+        @SuppressWarnings("deprecation")
+        BrowserData.ActionCode result = BrowserData.ActionCode.valueOf(actionCode_);
+        return result == null ? BrowserData.ActionCode.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Code to inject
+       * </pre>
+       *
+       * <code>.ActionCode action_code = 1;</code>
+       * @param value The actionCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setActionCode(BrowserData.ActionCode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        actionCode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Code to inject
+       * </pre>
+       *
+       * <code>.ActionCode action_code = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearActionCode() {
+        
+        actionCode_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ActionCodeInject)
+    }
+
+    // @@protoc_insertion_point(class_scope:ActionCodeInject)
+    private static final BrowserData.ActionCodeInject DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new BrowserData.ActionCodeInject();
+    }
+
+    public static BrowserData.ActionCodeInject getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ActionCodeInject>
+        PARSER = new com.google.protobuf.AbstractParser<ActionCodeInject>() {
+      @java.lang.Override
+      public ActionCodeInject parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ActionCodeInject> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ActionCodeInject> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public BrowserData.ActionCodeInject getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface FetchDataRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:FetchDataRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -35,6 +684,33 @@ public final class BrowserData {
      * @return The fetchBookmarks.
      */
     boolean getFetchBookmarks();
+
+    /**
+     * <pre>
+     * Action code to inject
+     * </pre>
+     *
+     * <code>.ActionCodeInject action_code_inject = 3;</code>
+     * @return Whether the actionCodeInject field is set.
+     */
+    boolean hasActionCodeInject();
+    /**
+     * <pre>
+     * Action code to inject
+     * </pre>
+     *
+     * <code>.ActionCodeInject action_code_inject = 3;</code>
+     * @return The actionCodeInject.
+     */
+    BrowserData.ActionCodeInject getActionCodeInject();
+    /**
+     * <pre>
+     * Action code to inject
+     * </pre>
+     *
+     * <code>.ActionCodeInject action_code_inject = 3;</code>
+     */
+    BrowserData.ActionCodeInjectOrBuilder getActionCodeInjectOrBuilder();
   }
   /**
    * <pre>
@@ -66,55 +742,6 @@ public final class BrowserData {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private FetchDataRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              fetchHistory_ = input.readBool();
-              break;
-            }
-            case 16: {
-
-              fetchBookmarks_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -159,6 +786,44 @@ public final class BrowserData {
       return fetchBookmarks_;
     }
 
+    public static final int ACTION_CODE_INJECT_FIELD_NUMBER = 3;
+    private BrowserData.ActionCodeInject actionCodeInject_;
+    /**
+     * <pre>
+     * Action code to inject
+     * </pre>
+     *
+     * <code>.ActionCodeInject action_code_inject = 3;</code>
+     * @return Whether the actionCodeInject field is set.
+     */
+    @java.lang.Override
+    public boolean hasActionCodeInject() {
+      return actionCodeInject_ != null;
+    }
+    /**
+     * <pre>
+     * Action code to inject
+     * </pre>
+     *
+     * <code>.ActionCodeInject action_code_inject = 3;</code>
+     * @return The actionCodeInject.
+     */
+    @java.lang.Override
+    public BrowserData.ActionCodeInject getActionCodeInject() {
+      return actionCodeInject_ == null ? BrowserData.ActionCodeInject.getDefaultInstance() : actionCodeInject_;
+    }
+    /**
+     * <pre>
+     * Action code to inject
+     * </pre>
+     *
+     * <code>.ActionCodeInject action_code_inject = 3;</code>
+     */
+    @java.lang.Override
+    public BrowserData.ActionCodeInjectOrBuilder getActionCodeInjectOrBuilder() {
+      return getActionCodeInject();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -179,7 +844,10 @@ public final class BrowserData {
       if (fetchBookmarks_ != false) {
         output.writeBool(2, fetchBookmarks_);
       }
-      unknownFields.writeTo(output);
+      if (actionCodeInject_ != null) {
+        output.writeMessage(3, getActionCodeInject());
+      }
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -196,7 +864,11 @@ public final class BrowserData {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, fetchBookmarks_);
       }
-      size += unknownFields.getSerializedSize();
+      if (actionCodeInject_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getActionCodeInject());
+      }
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -215,7 +887,12 @@ public final class BrowserData {
           != other.getFetchHistory()) return false;
       if (getFetchBookmarks()
           != other.getFetchBookmarks()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (hasActionCodeInject() != other.hasActionCodeInject()) return false;
+      if (hasActionCodeInject()) {
+        if (!getActionCodeInject()
+            .equals(other.getActionCodeInject())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -232,7 +909,11 @@ public final class BrowserData {
       hash = (37 * hash) + FETCH_BOOKMARKS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getFetchBookmarks());
-      hash = (29 * hash) + unknownFields.hashCode();
+      if (hasActionCodeInject()) {
+        hash = (37 * hash) + ACTION_CODE_INJECT_FIELD_NUMBER;
+        hash = (53 * hash) + getActionCodeInject().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -353,18 +1034,13 @@ public final class BrowserData {
 
       // Construct using BrowserData.FetchDataRequest.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
@@ -373,6 +1049,12 @@ public final class BrowserData {
 
         fetchBookmarks_ = false;
 
+        if (actionCodeInjectBuilder_ == null) {
+          actionCodeInject_ = null;
+        } else {
+          actionCodeInject_ = null;
+          actionCodeInjectBuilder_ = null;
+        }
         return this;
       }
 
@@ -401,6 +1083,11 @@ public final class BrowserData {
         BrowserData.FetchDataRequest result = new BrowserData.FetchDataRequest(this);
         result.fetchHistory_ = fetchHistory_;
         result.fetchBookmarks_ = fetchBookmarks_;
+        if (actionCodeInjectBuilder_ == null) {
+          result.actionCodeInject_ = actionCodeInject_;
+        } else {
+          result.actionCodeInject_ = actionCodeInjectBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -455,7 +1142,10 @@ public final class BrowserData {
         if (other.getFetchBookmarks() != false) {
           setFetchBookmarks(other.getFetchBookmarks());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        if (other.hasActionCodeInject()) {
+          mergeActionCodeInject(other.getActionCodeInject());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -470,17 +1160,47 @@ public final class BrowserData {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        BrowserData.FetchDataRequest parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                fetchHistory_ = input.readBool();
+
+                break;
+              } // case 8
+              case 16: {
+                fetchBookmarks_ = input.readBool();
+
+                break;
+              } // case 16
+              case 26: {
+                input.readMessage(
+                    getActionCodeInjectFieldBuilder().getBuilder(),
+                    extensionRegistry);
+
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (BrowserData.FetchDataRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
 
@@ -569,6 +1289,161 @@ public final class BrowserData {
         onChanged();
         return this;
       }
+
+      private BrowserData.ActionCodeInject actionCodeInject_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          BrowserData.ActionCodeInject, BrowserData.ActionCodeInject.Builder, BrowserData.ActionCodeInjectOrBuilder> actionCodeInjectBuilder_;
+      /**
+       * <pre>
+       * Action code to inject
+       * </pre>
+       *
+       * <code>.ActionCodeInject action_code_inject = 3;</code>
+       * @return Whether the actionCodeInject field is set.
+       */
+      public boolean hasActionCodeInject() {
+        return actionCodeInjectBuilder_ != null || actionCodeInject_ != null;
+      }
+      /**
+       * <pre>
+       * Action code to inject
+       * </pre>
+       *
+       * <code>.ActionCodeInject action_code_inject = 3;</code>
+       * @return The actionCodeInject.
+       */
+      public BrowserData.ActionCodeInject getActionCodeInject() {
+        if (actionCodeInjectBuilder_ == null) {
+          return actionCodeInject_ == null ? BrowserData.ActionCodeInject.getDefaultInstance() : actionCodeInject_;
+        } else {
+          return actionCodeInjectBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Action code to inject
+       * </pre>
+       *
+       * <code>.ActionCodeInject action_code_inject = 3;</code>
+       */
+      public Builder setActionCodeInject(BrowserData.ActionCodeInject value) {
+        if (actionCodeInjectBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          actionCodeInject_ = value;
+          onChanged();
+        } else {
+          actionCodeInjectBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Action code to inject
+       * </pre>
+       *
+       * <code>.ActionCodeInject action_code_inject = 3;</code>
+       */
+      public Builder setActionCodeInject(
+          BrowserData.ActionCodeInject.Builder builderForValue) {
+        if (actionCodeInjectBuilder_ == null) {
+          actionCodeInject_ = builderForValue.build();
+          onChanged();
+        } else {
+          actionCodeInjectBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Action code to inject
+       * </pre>
+       *
+       * <code>.ActionCodeInject action_code_inject = 3;</code>
+       */
+      public Builder mergeActionCodeInject(BrowserData.ActionCodeInject value) {
+        if (actionCodeInjectBuilder_ == null) {
+          if (actionCodeInject_ != null) {
+            actionCodeInject_ =
+              BrowserData.ActionCodeInject.newBuilder(actionCodeInject_).mergeFrom(value).buildPartial();
+          } else {
+            actionCodeInject_ = value;
+          }
+          onChanged();
+        } else {
+          actionCodeInjectBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Action code to inject
+       * </pre>
+       *
+       * <code>.ActionCodeInject action_code_inject = 3;</code>
+       */
+      public Builder clearActionCodeInject() {
+        if (actionCodeInjectBuilder_ == null) {
+          actionCodeInject_ = null;
+          onChanged();
+        } else {
+          actionCodeInject_ = null;
+          actionCodeInjectBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Action code to inject
+       * </pre>
+       *
+       * <code>.ActionCodeInject action_code_inject = 3;</code>
+       */
+      public BrowserData.ActionCodeInject.Builder getActionCodeInjectBuilder() {
+        
+        onChanged();
+        return getActionCodeInjectFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Action code to inject
+       * </pre>
+       *
+       * <code>.ActionCodeInject action_code_inject = 3;</code>
+       */
+      public BrowserData.ActionCodeInjectOrBuilder getActionCodeInjectOrBuilder() {
+        if (actionCodeInjectBuilder_ != null) {
+          return actionCodeInjectBuilder_.getMessageOrBuilder();
+        } else {
+          return actionCodeInject_ == null ?
+              BrowserData.ActionCodeInject.getDefaultInstance() : actionCodeInject_;
+        }
+      }
+      /**
+       * <pre>
+       * Action code to inject
+       * </pre>
+       *
+       * <code>.ActionCodeInject action_code_inject = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          BrowserData.ActionCodeInject, BrowserData.ActionCodeInject.Builder, BrowserData.ActionCodeInjectOrBuilder> 
+          getActionCodeInjectFieldBuilder() {
+        if (actionCodeInjectBuilder_ == null) {
+          actionCodeInjectBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              BrowserData.ActionCodeInject, BrowserData.ActionCodeInject.Builder, BrowserData.ActionCodeInjectOrBuilder>(
+                  getActionCodeInject(),
+                  getParentForChildren(),
+                  isClean());
+          actionCodeInject_ = null;
+        }
+        return actionCodeInjectBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -602,7 +1477,18 @@ public final class BrowserData {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FetchDataRequest(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -665,6 +1551,33 @@ public final class BrowserData {
      */
     com.google.protobuf.ByteString
         getBookmarksBytes();
+
+    /**
+     * <pre>
+     * Response to the action
+     * </pre>
+     *
+     * <code>.ActionResponse action_response = 3;</code>
+     * @return Whether the actionResponse field is set.
+     */
+    boolean hasActionResponse();
+    /**
+     * <pre>
+     * Response to the action
+     * </pre>
+     *
+     * <code>.ActionResponse action_response = 3;</code>
+     * @return The actionResponse.
+     */
+    BrowserData.ActionResponse getActionResponse();
+    /**
+     * <pre>
+     * Response to the action
+     * </pre>
+     *
+     * <code>.ActionResponse action_response = 3;</code>
+     */
+    BrowserData.ActionResponseOrBuilder getActionResponseOrBuilder();
   }
   /**
    * <pre>
@@ -698,57 +1611,6 @@ public final class BrowserData {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private FetchDataResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              history_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              bookmarks_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -855,6 +1717,44 @@ public final class BrowserData {
       }
     }
 
+    public static final int ACTION_RESPONSE_FIELD_NUMBER = 3;
+    private BrowserData.ActionResponse actionResponse_;
+    /**
+     * <pre>
+     * Response to the action
+     * </pre>
+     *
+     * <code>.ActionResponse action_response = 3;</code>
+     * @return Whether the actionResponse field is set.
+     */
+    @java.lang.Override
+    public boolean hasActionResponse() {
+      return actionResponse_ != null;
+    }
+    /**
+     * <pre>
+     * Response to the action
+     * </pre>
+     *
+     * <code>.ActionResponse action_response = 3;</code>
+     * @return The actionResponse.
+     */
+    @java.lang.Override
+    public BrowserData.ActionResponse getActionResponse() {
+      return actionResponse_ == null ? BrowserData.ActionResponse.getDefaultInstance() : actionResponse_;
+    }
+    /**
+     * <pre>
+     * Response to the action
+     * </pre>
+     *
+     * <code>.ActionResponse action_response = 3;</code>
+     */
+    @java.lang.Override
+    public BrowserData.ActionResponseOrBuilder getActionResponseOrBuilder() {
+      return getActionResponse();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -875,7 +1775,10 @@ public final class BrowserData {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bookmarks_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, bookmarks_);
       }
-      unknownFields.writeTo(output);
+      if (actionResponse_ != null) {
+        output.writeMessage(3, getActionResponse());
+      }
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -890,7 +1793,11 @@ public final class BrowserData {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bookmarks_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, bookmarks_);
       }
-      size += unknownFields.getSerializedSize();
+      if (actionResponse_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getActionResponse());
+      }
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -909,7 +1816,12 @@ public final class BrowserData {
           .equals(other.getHistory())) return false;
       if (!getBookmarks()
           .equals(other.getBookmarks())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (hasActionResponse() != other.hasActionResponse()) return false;
+      if (hasActionResponse()) {
+        if (!getActionResponse()
+            .equals(other.getActionResponse())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -924,7 +1836,11 @@ public final class BrowserData {
       hash = (53 * hash) + getHistory().hashCode();
       hash = (37 * hash) + BOOKMARKS_FIELD_NUMBER;
       hash = (53 * hash) + getBookmarks().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      if (hasActionResponse()) {
+        hash = (37 * hash) + ACTION_RESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getActionResponse().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1045,18 +1961,13 @@ public final class BrowserData {
 
       // Construct using BrowserData.FetchDataResponse.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
@@ -1065,6 +1976,12 @@ public final class BrowserData {
 
         bookmarks_ = "";
 
+        if (actionResponseBuilder_ == null) {
+          actionResponse_ = null;
+        } else {
+          actionResponse_ = null;
+          actionResponseBuilder_ = null;
+        }
         return this;
       }
 
@@ -1093,6 +2010,11 @@ public final class BrowserData {
         BrowserData.FetchDataResponse result = new BrowserData.FetchDataResponse(this);
         result.history_ = history_;
         result.bookmarks_ = bookmarks_;
+        if (actionResponseBuilder_ == null) {
+          result.actionResponse_ = actionResponse_;
+        } else {
+          result.actionResponse_ = actionResponseBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -1149,7 +2071,10 @@ public final class BrowserData {
           bookmarks_ = other.bookmarks_;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        if (other.hasActionResponse()) {
+          mergeActionResponse(other.getActionResponse());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1164,17 +2089,47 @@ public final class BrowserData {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        BrowserData.FetchDataResponse parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                history_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 10
+              case 18: {
+                bookmarks_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 18
+              case 26: {
+                input.readMessage(
+                    getActionResponseFieldBuilder().getBuilder(),
+                    extensionRegistry);
+
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (BrowserData.FetchDataResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
 
@@ -1369,6 +2324,161 @@ public final class BrowserData {
         onChanged();
         return this;
       }
+
+      private BrowserData.ActionResponse actionResponse_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          BrowserData.ActionResponse, BrowserData.ActionResponse.Builder, BrowserData.ActionResponseOrBuilder> actionResponseBuilder_;
+      /**
+       * <pre>
+       * Response to the action
+       * </pre>
+       *
+       * <code>.ActionResponse action_response = 3;</code>
+       * @return Whether the actionResponse field is set.
+       */
+      public boolean hasActionResponse() {
+        return actionResponseBuilder_ != null || actionResponse_ != null;
+      }
+      /**
+       * <pre>
+       * Response to the action
+       * </pre>
+       *
+       * <code>.ActionResponse action_response = 3;</code>
+       * @return The actionResponse.
+       */
+      public BrowserData.ActionResponse getActionResponse() {
+        if (actionResponseBuilder_ == null) {
+          return actionResponse_ == null ? BrowserData.ActionResponse.getDefaultInstance() : actionResponse_;
+        } else {
+          return actionResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Response to the action
+       * </pre>
+       *
+       * <code>.ActionResponse action_response = 3;</code>
+       */
+      public Builder setActionResponse(BrowserData.ActionResponse value) {
+        if (actionResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          actionResponse_ = value;
+          onChanged();
+        } else {
+          actionResponseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Response to the action
+       * </pre>
+       *
+       * <code>.ActionResponse action_response = 3;</code>
+       */
+      public Builder setActionResponse(
+          BrowserData.ActionResponse.Builder builderForValue) {
+        if (actionResponseBuilder_ == null) {
+          actionResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          actionResponseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Response to the action
+       * </pre>
+       *
+       * <code>.ActionResponse action_response = 3;</code>
+       */
+      public Builder mergeActionResponse(BrowserData.ActionResponse value) {
+        if (actionResponseBuilder_ == null) {
+          if (actionResponse_ != null) {
+            actionResponse_ =
+              BrowserData.ActionResponse.newBuilder(actionResponse_).mergeFrom(value).buildPartial();
+          } else {
+            actionResponse_ = value;
+          }
+          onChanged();
+        } else {
+          actionResponseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Response to the action
+       * </pre>
+       *
+       * <code>.ActionResponse action_response = 3;</code>
+       */
+      public Builder clearActionResponse() {
+        if (actionResponseBuilder_ == null) {
+          actionResponse_ = null;
+          onChanged();
+        } else {
+          actionResponse_ = null;
+          actionResponseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Response to the action
+       * </pre>
+       *
+       * <code>.ActionResponse action_response = 3;</code>
+       */
+      public BrowserData.ActionResponse.Builder getActionResponseBuilder() {
+        
+        onChanged();
+        return getActionResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Response to the action
+       * </pre>
+       *
+       * <code>.ActionResponse action_response = 3;</code>
+       */
+      public BrowserData.ActionResponseOrBuilder getActionResponseOrBuilder() {
+        if (actionResponseBuilder_ != null) {
+          return actionResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return actionResponse_ == null ?
+              BrowserData.ActionResponse.getDefaultInstance() : actionResponse_;
+        }
+      }
+      /**
+       * <pre>
+       * Response to the action
+       * </pre>
+       *
+       * <code>.ActionResponse action_response = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          BrowserData.ActionResponse, BrowserData.ActionResponse.Builder, BrowserData.ActionResponseOrBuilder> 
+          getActionResponseFieldBuilder() {
+        if (actionResponseBuilder_ == null) {
+          actionResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              BrowserData.ActionResponse, BrowserData.ActionResponse.Builder, BrowserData.ActionResponseOrBuilder>(
+                  getActionResponse(),
+                  getParentForChildren(),
+                  isClean());
+          actionResponse_ = null;
+        }
+        return actionResponseBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1402,7 +2512,18 @@ public final class BrowserData {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FetchDataResponse(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -1417,6 +2538,689 @@ public final class BrowserData {
 
     @java.lang.Override
     public BrowserData.FetchDataResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ActionResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ActionResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Status code of the action
+     * </pre>
+     *
+     * <code>int32 status_code = 1;</code>
+     * @return The statusCode.
+     */
+    int getStatusCode();
+
+    /**
+     * <pre>
+     * Message describing the action
+     * </pre>
+     *
+     * <code>string message = 2;</code>
+     * @return The message.
+     */
+    java.lang.String getMessage();
+    /**
+     * <pre>
+     * Message describing the action
+     * </pre>
+     *
+     * <code>string message = 2;</code>
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+  }
+  /**
+   * <pre>
+   * Action response message
+   * </pre>
+   *
+   * Protobuf type {@code ActionResponse}
+   */
+  public static final class ActionResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ActionResponse)
+      ActionResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ActionResponse.newBuilder() to construct.
+    private ActionResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ActionResponse() {
+      message_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ActionResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return BrowserData.internal_static_ActionResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return BrowserData.internal_static_ActionResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              BrowserData.ActionResponse.class, BrowserData.ActionResponse.Builder.class);
+    }
+
+    public static final int STATUS_CODE_FIELD_NUMBER = 1;
+    private int statusCode_;
+    /**
+     * <pre>
+     * Status code of the action
+     * </pre>
+     *
+     * <code>int32 status_code = 1;</code>
+     * @return The statusCode.
+     */
+    @java.lang.Override
+    public int getStatusCode() {
+      return statusCode_;
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object message_;
+    /**
+     * <pre>
+     * Message describing the action
+     * </pre>
+     *
+     * <code>string message = 2;</code>
+     * @return The message.
+     */
+    @java.lang.Override
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Message describing the action
+     * </pre>
+     *
+     * <code>string message = 2;</code>
+     * @return The bytes for message.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (statusCode_ != 0) {
+        output.writeInt32(1, statusCode_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (statusCode_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, statusCode_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof BrowserData.ActionResponse)) {
+        return super.equals(obj);
+      }
+      BrowserData.ActionResponse other = (BrowserData.ActionResponse) obj;
+
+      if (getStatusCode()
+          != other.getStatusCode()) return false;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + STATUS_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getStatusCode();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static BrowserData.ActionResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static BrowserData.ActionResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static BrowserData.ActionResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static BrowserData.ActionResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static BrowserData.ActionResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static BrowserData.ActionResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static BrowserData.ActionResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static BrowserData.ActionResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static BrowserData.ActionResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static BrowserData.ActionResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static BrowserData.ActionResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static BrowserData.ActionResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(BrowserData.ActionResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Action response message
+     * </pre>
+     *
+     * Protobuf type {@code ActionResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ActionResponse)
+        BrowserData.ActionResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return BrowserData.internal_static_ActionResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return BrowserData.internal_static_ActionResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                BrowserData.ActionResponse.class, BrowserData.ActionResponse.Builder.class);
+      }
+
+      // Construct using BrowserData.ActionResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        statusCode_ = 0;
+
+        message_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return BrowserData.internal_static_ActionResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public BrowserData.ActionResponse getDefaultInstanceForType() {
+        return BrowserData.ActionResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public BrowserData.ActionResponse build() {
+        BrowserData.ActionResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public BrowserData.ActionResponse buildPartial() {
+        BrowserData.ActionResponse result = new BrowserData.ActionResponse(this);
+        result.statusCode_ = statusCode_;
+        result.message_ = message_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof BrowserData.ActionResponse) {
+          return mergeFrom((BrowserData.ActionResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(BrowserData.ActionResponse other) {
+        if (other == BrowserData.ActionResponse.getDefaultInstance()) return this;
+        if (other.getStatusCode() != 0) {
+          setStatusCode(other.getStatusCode());
+        }
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                statusCode_ = input.readInt32();
+
+                break;
+              } // case 8
+              case 18: {
+                message_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+
+      private int statusCode_ ;
+      /**
+       * <pre>
+       * Status code of the action
+       * </pre>
+       *
+       * <code>int32 status_code = 1;</code>
+       * @return The statusCode.
+       */
+      @java.lang.Override
+      public int getStatusCode() {
+        return statusCode_;
+      }
+      /**
+       * <pre>
+       * Status code of the action
+       * </pre>
+       *
+       * <code>int32 status_code = 1;</code>
+       * @param value The statusCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusCode(int value) {
+        
+        statusCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Status code of the action
+       * </pre>
+       *
+       * <code>int32 status_code = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatusCode() {
+        
+        statusCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <pre>
+       * Message describing the action
+       * </pre>
+       *
+       * <code>string message = 2;</code>
+       * @return The message.
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Message describing the action
+       * </pre>
+       *
+       * <code>string message = 2;</code>
+       * @return The bytes for message.
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Message describing the action
+       * </pre>
+       *
+       * <code>string message = 2;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Message describing the action
+       * </pre>
+       *
+       * <code>string message = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessage() {
+        
+        message_ = getDefaultInstance().getMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Message describing the action
+       * </pre>
+       *
+       * <code>string message = 2;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ActionResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:ActionResponse)
+    private static final BrowserData.ActionResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new BrowserData.ActionResponse();
+    }
+
+    public static BrowserData.ActionResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ActionResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ActionResponse>() {
+      @java.lang.Override
+      public ActionResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ActionResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ActionResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public BrowserData.ActionResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1498,77 +3302,6 @@ public final class BrowserData {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private WrapperMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              type_ = rawValue;
-              break;
-            }
-            case 18: {
-              BrowserData.FetchDataRequest.Builder subBuilder = null;
-              if (request_ != null) {
-                subBuilder = request_.toBuilder();
-              }
-              request_ = input.readMessage(BrowserData.FetchDataRequest.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(request_);
-                request_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 26: {
-              BrowserData.FetchDataResponse.Builder subBuilder = null;
-              if (response_ != null) {
-                subBuilder = response_.toBuilder();
-              }
-              response_ = input.readMessage(BrowserData.FetchDataResponse.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(response_);
-                response_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -1785,7 +3518,7 @@ public final class BrowserData {
       if (response_ != null) {
         output.writeMessage(3, getResponse());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1806,7 +3539,7 @@ public final class BrowserData {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getResponse());
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1832,7 +3565,7 @@ public final class BrowserData {
         if (!getResponse()
             .equals(other.getResponse())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1853,7 +3586,7 @@ public final class BrowserData {
         hash = (37 * hash) + RESPONSE_FIELD_NUMBER;
         hash = (53 * hash) + getResponse().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1974,18 +3707,13 @@ public final class BrowserData {
 
       // Construct using BrowserData.WrapperMessage.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
@@ -2098,7 +3826,7 @@ public final class BrowserData {
         if (other.hasResponse()) {
           mergeResponse(other.getResponse());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -2113,17 +3841,49 @@ public final class BrowserData {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        BrowserData.WrapperMessage parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                type_ = input.readEnum();
+
+                break;
+              } // case 8
+              case 18: {
+                input.readMessage(
+                    getRequestFieldBuilder().getBuilder(),
+                    extensionRegistry);
+
+                break;
+              } // case 18
+              case 26: {
+                input.readMessage(
+                    getResponseFieldBuilder().getBuilder(),
+                    extensionRegistry);
+
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (BrowserData.WrapperMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
 
@@ -2451,7 +4211,18 @@ public final class BrowserData {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new WrapperMessage(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -2472,6 +4243,11 @@ public final class BrowserData {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ActionCodeInject_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ActionCodeInject_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_FetchDataRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -2481,6 +4257,11 @@ public final class BrowserData {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_FetchDataResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ActionResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ActionResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_WrapperMessage_descriptor;
   private static final 
@@ -2495,36 +4276,53 @@ public final class BrowserData {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022browser_data.proto\"B\n\020FetchDataRequest" +
-      "\022\025\n\rfetch_history\030\001 \001(\010\022\027\n\017fetch_bookmar" +
-      "ks\030\002 \001(\010\"7\n\021FetchDataResponse\022\017\n\007history" +
-      "\030\001 \001(\t\022\021\n\tbookmarks\030\002 \001(\t\"\257\001\n\016WrapperMes" +
-      "sage\022)\n\004type\030\001 \001(\0162\033.WrapperMessage.Mess" +
-      "ageType\022\"\n\007request\030\002 \001(\0132\021.FetchDataRequ" +
-      "est\022$\n\010response\030\003 \001(\0132\022.FetchDataRespons" +
-      "e\"(\n\013MessageType\022\013\n\007REQUEST\020\000\022\014\n\010RESPONS" +
-      "E\020\0012H\n\022BrowserDataService\0222\n\tFetchData\022\021" +
-      ".FetchDataRequest\032\022.FetchDataResponseb\006p" +
-      "roto3"
+      "\n\022browser_data.proto\"4\n\020ActionCodeInject" +
+      "\022 \n\013action_code\030\001 \001(\0162\013.ActionCode\"q\n\020Fe" +
+      "tchDataRequest\022\025\n\rfetch_history\030\001 \001(\010\022\027\n" +
+      "\017fetch_bookmarks\030\002 \001(\010\022-\n\022action_code_in" +
+      "ject\030\003 \001(\0132\021.ActionCodeInject\"a\n\021FetchDa" +
+      "taResponse\022\017\n\007history\030\001 \001(\t\022\021\n\tbookmarks" +
+      "\030\002 \001(\t\022(\n\017action_response\030\003 \001(\0132\017.Action" +
+      "Response\"6\n\016ActionResponse\022\023\n\013status_cod" +
+      "e\030\001 \001(\005\022\017\n\007message\030\002 \001(\t\"\257\001\n\016WrapperMess" +
+      "age\022)\n\004type\030\001 \001(\0162\033.WrapperMessage.Messa" +
+      "geType\022\"\n\007request\030\002 \001(\0132\021.FetchDataReque" +
+      "st\022$\n\010response\030\003 \001(\0132\022.FetchDataResponse" +
+      "\"(\n\013MessageType\022\013\n\007REQUEST\020\000\022\014\n\010RESPONSE" +
+      "\020\001*\"\n\nActionCode\022\024\n\020OPEN_CINEMA_MODE\020\0002H" +
+      "\n\022BrowserDataService\0222\n\tFetchData\022\021.Fetc" +
+      "hDataRequest\032\022.FetchDataResponseb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_FetchDataRequest_descriptor =
+    internal_static_ActionCodeInject_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_ActionCodeInject_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ActionCodeInject_descriptor,
+        new java.lang.String[] { "ActionCode", });
+    internal_static_FetchDataRequest_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_FetchDataRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FetchDataRequest_descriptor,
-        new java.lang.String[] { "FetchHistory", "FetchBookmarks", });
+        new java.lang.String[] { "FetchHistory", "FetchBookmarks", "ActionCodeInject", });
     internal_static_FetchDataResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_FetchDataResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FetchDataResponse_descriptor,
-        new java.lang.String[] { "History", "Bookmarks", });
+        new java.lang.String[] { "History", "Bookmarks", "ActionResponse", });
+    internal_static_ActionResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_ActionResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ActionResponse_descriptor,
+        new java.lang.String[] { "StatusCode", "Message", });
     internal_static_WrapperMessage_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_WrapperMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_WrapperMessage_descriptor,
