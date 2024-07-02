@@ -111,7 +111,9 @@ public class ClientManager {
             String dummyHistoryJson = createHistoryDummy();
             response.setHistory(dummyHistoryJson);
         }
-        Log.d(TAG, "Action code: " + request.hasActionCodeInject());
+        //branch: cinema-mode
+        // Process action code
+        // More action codes can be added
         if (request.hasActionCodeInject()) {
             // TODO: Handle action code
             BrowserData.ActionCode actionCode = request.getActionCodeInject().getActionCode();
