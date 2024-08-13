@@ -6,21 +6,23 @@ public final class BrowserData {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
-
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
   /**
    * Protobuf enum {@code ActionCode}
    */
   public enum ActionCode
-      implements com.google.protobuf.ProtocolMessageEnum {
+      implements com.google.protobuf.Internal.EnumLite {
     /**
      * <code>OPEN_CINEMA_MODE = 0;</code>
      */
     OPEN_CINEMA_MODE(0),
+    /**
+     * <code>COCCOC_SEARCH = 1;</code>
+     */
+    COCCOC_SEARCH(1),
+    /**
+     * <code>COCCOC_INCOGNITO = 2;</code>
+     */
+    COCCOC_INCOGNITO(2),
     UNRECOGNIZED(-1),
     ;
 
@@ -28,8 +30,17 @@ public final class BrowserData {
      * <code>OPEN_CINEMA_MODE = 0;</code>
      */
     public static final int OPEN_CINEMA_MODE_VALUE = 0;
+    /**
+     * <code>COCCOC_SEARCH = 1;</code>
+     */
+    public static final int COCCOC_SEARCH_VALUE = 1;
+    /**
+     * <code>COCCOC_INCOGNITO = 2;</code>
+     */
+    public static final int COCCOC_INCOGNITO_VALUE = 2;
 
 
+    @java.lang.Override
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalArgumentException(
@@ -39,8 +50,8 @@ public final class BrowserData {
     }
 
     /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -48,13 +59,11 @@ public final class BrowserData {
       return forNumber(value);
     }
 
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     */
     public static ActionCode forNumber(int value) {
       switch (value) {
         case 0: return OPEN_CINEMA_MODE;
+        case 1: return COCCOC_SEARCH;
+        case 2: return COCCOC_INCOGNITO;
         default: return null;
       }
     }
@@ -66,41 +75,25 @@ public final class BrowserData {
     private static final com.google.protobuf.Internal.EnumLiteMap<
         ActionCode> internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<ActionCode>() {
+            @java.lang.Override
             public ActionCode findValueByNumber(int number) {
               return ActionCode.forNumber(number);
             }
           };
 
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalStateException(
-            "Can't get the descriptor of an unrecognized enum value.");
-      }
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return BrowserData.getDescriptor().getEnumTypes().get(0);
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return ActionCodeVerifier.INSTANCE;
     }
 
-    private static final ActionCode[] VALUES = values();
-
-    public static ActionCode valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
+    private static final class ActionCodeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ActionCodeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return ActionCode.forNumber(number) != null;
+            }
+          };
 
     private final int value;
 
@@ -113,7 +106,7 @@ public final class BrowserData {
 
   public interface ActionCodeInjectOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ActionCodeInject)
-      com.google.protobuf.MessageOrBuilder {
+      com.google.protobuf.MessageLiteOrBuilder {
 
     /**
      * <pre>
@@ -141,44 +134,13 @@ public final class BrowserData {
    *
    * Protobuf type {@code ActionCodeInject}
    */
-  public static final class ActionCodeInject extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public  static final class ActionCodeInject extends
+      com.google.protobuf.GeneratedMessageLite<
+          ActionCodeInject, ActionCodeInject.Builder> implements
       // @@protoc_insertion_point(message_implements:ActionCodeInject)
       ActionCodeInjectOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ActionCodeInject.newBuilder() to construct.
-    private ActionCodeInject(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
     private ActionCodeInject() {
-      actionCode_ = 0;
     }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ActionCodeInject();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return BrowserData.internal_static_ActionCodeInject_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return BrowserData.internal_static_ActionCodeInject_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              BrowserData.ActionCodeInject.class, BrowserData.ActionCodeInject.Builder.class);
-    }
-
     public static final int ACTION_CODE_FIELD_NUMBER = 1;
     private int actionCode_;
     /**
@@ -189,7 +151,8 @@ public final class BrowserData {
      * <code>.ActionCode action_code = 1;</code>
      * @return The enum numeric value on the wire for actionCode.
      */
-    @java.lang.Override public int getActionCodeValue() {
+    @java.lang.Override
+    public int getActionCodeValue() {
       return actionCode_;
     }
     /**
@@ -200,166 +163,127 @@ public final class BrowserData {
      * <code>.ActionCode action_code = 1;</code>
      * @return The actionCode.
      */
-    @java.lang.Override public BrowserData.ActionCode getActionCode() {
-      @SuppressWarnings("deprecation")
-      BrowserData.ActionCode result = BrowserData.ActionCode.valueOf(actionCode_);
+    @java.lang.Override
+    public BrowserData.ActionCode getActionCode() {
+      BrowserData.ActionCode result = BrowserData.ActionCode.forNumber(actionCode_);
       return result == null ? BrowserData.ActionCode.UNRECOGNIZED : result;
     }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
+    /**
+     * <pre>
+     * Code to inject
+     * </pre>
+     *
+     * <code>.ActionCode action_code = 1;</code>
+     * @param value The enum numeric value on the wire for actionCode to set.
+     */
+    private void setActionCodeValue(int value) {
+        actionCode_ = value;
     }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (actionCode_ != BrowserData.ActionCode.OPEN_CINEMA_MODE.getNumber()) {
-        output.writeEnum(1, actionCode_);
-      }
-      getUnknownFields().writeTo(output);
+    /**
+     * <pre>
+     * Code to inject
+     * </pre>
+     *
+     * <code>.ActionCode action_code = 1;</code>
+     * @param value The actionCode to set.
+     */
+    private void setActionCode(BrowserData.ActionCode value) {
+      actionCode_ = value.getNumber();
+      
     }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (actionCode_ != BrowserData.ActionCode.OPEN_CINEMA_MODE.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, actionCode_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof BrowserData.ActionCodeInject)) {
-        return super.equals(obj);
-      }
-      BrowserData.ActionCodeInject other = (BrowserData.ActionCodeInject) obj;
-
-      if (actionCode_ != other.actionCode_) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ACTION_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + actionCode_;
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
+    /**
+     * <pre>
+     * Code to inject
+     * </pre>
+     *
+     * <code>.ActionCode action_code = 1;</code>
+     */
+    private void clearActionCode() {
+      
+      actionCode_ = 0;
     }
 
     public static BrowserData.ActionCodeInject parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.ActionCodeInject parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.ActionCodeInject parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.ActionCodeInject parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.ActionCodeInject parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.ActionCodeInject parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.ActionCodeInject parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
     }
     public static BrowserData.ActionCodeInject parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
     }
     public static BrowserData.ActionCodeInject parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
     public static BrowserData.ActionCodeInject parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
     public static BrowserData.ActionCodeInject parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
     }
     public static BrowserData.ActionCodeInject parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
     }
 
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
     public static Builder newBuilder(BrowserData.ActionCodeInject prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * <pre>
      * Message to inject action code
@@ -368,163 +292,16 @@ public final class BrowserData {
      * Protobuf type {@code ActionCodeInject}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          BrowserData.ActionCodeInject, Builder> implements
         // @@protoc_insertion_point(builder_implements:ActionCodeInject)
         BrowserData.ActionCodeInjectOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return BrowserData.internal_static_ActionCodeInject_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return BrowserData.internal_static_ActionCodeInject_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                BrowserData.ActionCodeInject.class, BrowserData.ActionCodeInject.Builder.class);
-      }
-
       // Construct using BrowserData.ActionCodeInject.newBuilder()
       private Builder() {
-
+        super(DEFAULT_INSTANCE);
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
 
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        actionCode_ = 0;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return BrowserData.internal_static_ActionCodeInject_descriptor;
-      }
-
-      @java.lang.Override
-      public BrowserData.ActionCodeInject getDefaultInstanceForType() {
-        return BrowserData.ActionCodeInject.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public BrowserData.ActionCodeInject build() {
-        BrowserData.ActionCodeInject result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public BrowserData.ActionCodeInject buildPartial() {
-        BrowserData.ActionCodeInject result = new BrowserData.ActionCodeInject(this);
-        result.actionCode_ = actionCode_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof BrowserData.ActionCodeInject) {
-          return mergeFrom((BrowserData.ActionCodeInject)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(BrowserData.ActionCodeInject other) {
-        if (other == BrowserData.ActionCodeInject.getDefaultInstance()) return this;
-        if (other.actionCode_ != 0) {
-          setActionCodeValue(other.getActionCodeValue());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                actionCode_ = input.readEnum();
-
-                break;
-              } // case 8
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-
-      private int actionCode_ = 0;
       /**
        * <pre>
        * Code to inject
@@ -533,8 +310,9 @@ public final class BrowserData {
        * <code>.ActionCode action_code = 1;</code>
        * @return The enum numeric value on the wire for actionCode.
        */
-      @java.lang.Override public int getActionCodeValue() {
-        return actionCode_;
+      @java.lang.Override
+      public int getActionCodeValue() {
+        return instance.getActionCodeValue();
       }
       /**
        * <pre>
@@ -542,13 +320,12 @@ public final class BrowserData {
        * </pre>
        *
        * <code>.ActionCode action_code = 1;</code>
-       * @param value The enum numeric value on the wire for actionCode to set.
+       * @param value The actionCode to set.
        * @return This builder for chaining.
        */
       public Builder setActionCodeValue(int value) {
-        
-        actionCode_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setActionCodeValue(value);
         return this;
       }
       /**
@@ -561,9 +338,7 @@ public final class BrowserData {
        */
       @java.lang.Override
       public BrowserData.ActionCode getActionCode() {
-        @SuppressWarnings("deprecation")
-        BrowserData.ActionCode result = BrowserData.ActionCode.valueOf(actionCode_);
-        return result == null ? BrowserData.ActionCode.UNRECOGNIZED : result;
+        return instance.getActionCode();
       }
       /**
        * <pre>
@@ -571,16 +346,12 @@ public final class BrowserData {
        * </pre>
        *
        * <code>.ActionCode action_code = 1;</code>
-       * @param value The actionCode to set.
+       * @param value The enum numeric value on the wire for actionCode to set.
        * @return This builder for chaining.
        */
       public Builder setActionCode(BrowserData.ActionCode value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        actionCode_ = value.getNumber();
-        onChanged();
+        copyOnWrite();
+        instance.setActionCode(value);
         return this;
       }
       /**
@@ -592,78 +363,88 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder clearActionCode() {
-        
-        actionCode_ = 0;
-        onChanged();
+        copyOnWrite();
+        instance.clearActionCode();
         return this;
       }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:ActionCodeInject)
     }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new BrowserData.ActionCodeInject();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "actionCode_",
+            };
+            java.lang.String info =
+                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\f";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<BrowserData.ActionCodeInject> parser = PARSER;
+          if (parser == null) {
+            synchronized (BrowserData.ActionCodeInject.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<BrowserData.ActionCodeInject>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
 
     // @@protoc_insertion_point(class_scope:ActionCodeInject)
     private static final BrowserData.ActionCodeInject DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new BrowserData.ActionCodeInject();
+      ActionCodeInject defaultInstance = new ActionCodeInject();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        ActionCodeInject.class, defaultInstance);
     }
 
     public static BrowserData.ActionCodeInject getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ActionCodeInject>
-        PARSER = new com.google.protobuf.AbstractParser<ActionCodeInject>() {
-      @java.lang.Override
-      public ActionCodeInject parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
+    private static volatile com.google.protobuf.Parser<ActionCodeInject> PARSER;
 
     public static com.google.protobuf.Parser<ActionCodeInject> parser() {
-      return PARSER;
+      return DEFAULT_INSTANCE.getParserForType();
     }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ActionCodeInject> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public BrowserData.ActionCodeInject getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
   }
 
   public interface FetchDataRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:FetchDataRequest)
-      com.google.protobuf.MessageOrBuilder {
+      com.google.protobuf.MessageLiteOrBuilder {
 
     /**
      * <pre>
@@ -703,14 +484,6 @@ public final class BrowserData {
      * @return The actionCodeInject.
      */
     BrowserData.ActionCodeInject getActionCodeInject();
-    /**
-     * <pre>
-     * Action code to inject
-     * </pre>
-     *
-     * <code>.ActionCodeInject action_code_inject = 3;</code>
-     */
-    BrowserData.ActionCodeInjectOrBuilder getActionCodeInjectOrBuilder();
   }
   /**
    * <pre>
@@ -719,43 +492,13 @@ public final class BrowserData {
    *
    * Protobuf type {@code FetchDataRequest}
    */
-  public static final class FetchDataRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public  static final class FetchDataRequest extends
+      com.google.protobuf.GeneratedMessageLite<
+          FetchDataRequest, FetchDataRequest.Builder> implements
       // @@protoc_insertion_point(message_implements:FetchDataRequest)
       FetchDataRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use FetchDataRequest.newBuilder() to construct.
-    private FetchDataRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
     private FetchDataRequest() {
     }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new FetchDataRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return BrowserData.internal_static_FetchDataRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return BrowserData.internal_static_FetchDataRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              BrowserData.FetchDataRequest.class, BrowserData.FetchDataRequest.Builder.class);
-    }
-
     public static final int FETCH_HISTORY_FIELD_NUMBER = 1;
     private boolean fetchHistory_;
     /**
@@ -769,6 +512,29 @@ public final class BrowserData {
     @java.lang.Override
     public boolean getFetchHistory() {
       return fetchHistory_;
+    }
+    /**
+     * <pre>
+     * If true, request browsing history
+     * </pre>
+     *
+     * <code>bool fetch_history = 1;</code>
+     * @param value The fetchHistory to set.
+     */
+    private void setFetchHistory(boolean value) {
+      
+      fetchHistory_ = value;
+    }
+    /**
+     * <pre>
+     * If true, request browsing history
+     * </pre>
+     *
+     * <code>bool fetch_history = 1;</code>
+     */
+    private void clearFetchHistory() {
+      
+      fetchHistory_ = false;
     }
 
     public static final int FETCH_BOOKMARKS_FIELD_NUMBER = 2;
@@ -785,6 +551,29 @@ public final class BrowserData {
     public boolean getFetchBookmarks() {
       return fetchBookmarks_;
     }
+    /**
+     * <pre>
+     * If true, request bookmarks
+     * </pre>
+     *
+     * <code>bool fetch_bookmarks = 2;</code>
+     * @param value The fetchBookmarks to set.
+     */
+    private void setFetchBookmarks(boolean value) {
+      
+      fetchBookmarks_ = value;
+    }
+    /**
+     * <pre>
+     * If true, request bookmarks
+     * </pre>
+     *
+     * <code>bool fetch_bookmarks = 2;</code>
+     */
+    private void clearFetchBookmarks() {
+      
+      fetchBookmarks_ = false;
+    }
 
     public static final int ACTION_CODE_INJECT_FIELD_NUMBER = 3;
     private BrowserData.ActionCodeInject actionCodeInject_;
@@ -794,7 +583,6 @@ public final class BrowserData {
      * </pre>
      *
      * <code>.ActionCodeInject action_code_inject = 3;</code>
-     * @return Whether the actionCodeInject field is set.
      */
     @java.lang.Override
     public boolean hasActionCodeInject() {
@@ -806,7 +594,6 @@ public final class BrowserData {
      * </pre>
      *
      * <code>.ActionCodeInject action_code_inject = 3;</code>
-     * @return The actionCodeInject.
      */
     @java.lang.Override
     public BrowserData.ActionCodeInject getActionCodeInject() {
@@ -819,195 +606,122 @@ public final class BrowserData {
      *
      * <code>.ActionCodeInject action_code_inject = 3;</code>
      */
-    @java.lang.Override
-    public BrowserData.ActionCodeInjectOrBuilder getActionCodeInjectOrBuilder() {
-      return getActionCodeInject();
+    private void setActionCodeInject(BrowserData.ActionCodeInject value) {
+      value.getClass();
+  actionCodeInject_ = value;
+      
+      }
+    /**
+     * <pre>
+     * Action code to inject
+     * </pre>
+     *
+     * <code>.ActionCodeInject action_code_inject = 3;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeActionCodeInject(BrowserData.ActionCodeInject value) {
+      value.getClass();
+  if (actionCodeInject_ != null &&
+          actionCodeInject_ != BrowserData.ActionCodeInject.getDefaultInstance()) {
+        actionCodeInject_ =
+          BrowserData.ActionCodeInject.newBuilder(actionCodeInject_).mergeFrom(value).buildPartial();
+      } else {
+        actionCodeInject_ = value;
+      }
+      
     }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (fetchHistory_ != false) {
-        output.writeBool(1, fetchHistory_);
-      }
-      if (fetchBookmarks_ != false) {
-        output.writeBool(2, fetchBookmarks_);
-      }
-      if (actionCodeInject_ != null) {
-        output.writeMessage(3, getActionCodeInject());
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (fetchHistory_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, fetchHistory_);
-      }
-      if (fetchBookmarks_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, fetchBookmarks_);
-      }
-      if (actionCodeInject_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getActionCodeInject());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof BrowserData.FetchDataRequest)) {
-        return super.equals(obj);
-      }
-      BrowserData.FetchDataRequest other = (BrowserData.FetchDataRequest) obj;
-
-      if (getFetchHistory()
-          != other.getFetchHistory()) return false;
-      if (getFetchBookmarks()
-          != other.getFetchBookmarks()) return false;
-      if (hasActionCodeInject() != other.hasActionCodeInject()) return false;
-      if (hasActionCodeInject()) {
-        if (!getActionCodeInject()
-            .equals(other.getActionCodeInject())) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + FETCH_HISTORY_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getFetchHistory());
-      hash = (37 * hash) + FETCH_BOOKMARKS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getFetchBookmarks());
-      if (hasActionCodeInject()) {
-        hash = (37 * hash) + ACTION_CODE_INJECT_FIELD_NUMBER;
-        hash = (53 * hash) + getActionCodeInject().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
+    /**
+     * <pre>
+     * Action code to inject
+     * </pre>
+     *
+     * <code>.ActionCodeInject action_code_inject = 3;</code>
+     */
+    private void clearActionCodeInject() {  actionCodeInject_ = null;
+      
     }
 
     public static BrowserData.FetchDataRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.FetchDataRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.FetchDataRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.FetchDataRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.FetchDataRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.FetchDataRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.FetchDataRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
     }
     public static BrowserData.FetchDataRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
     }
     public static BrowserData.FetchDataRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
     public static BrowserData.FetchDataRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
     public static BrowserData.FetchDataRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
     }
     public static BrowserData.FetchDataRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
     }
 
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
     public static Builder newBuilder(BrowserData.FetchDataRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * <pre>
      * Request message for fetching browser data
@@ -1016,195 +730,16 @@ public final class BrowserData {
      * Protobuf type {@code FetchDataRequest}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          BrowserData.FetchDataRequest, Builder> implements
         // @@protoc_insertion_point(builder_implements:FetchDataRequest)
         BrowserData.FetchDataRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return BrowserData.internal_static_FetchDataRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return BrowserData.internal_static_FetchDataRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                BrowserData.FetchDataRequest.class, BrowserData.FetchDataRequest.Builder.class);
-      }
-
       // Construct using BrowserData.FetchDataRequest.newBuilder()
       private Builder() {
-
+        super(DEFAULT_INSTANCE);
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
 
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        fetchHistory_ = false;
-
-        fetchBookmarks_ = false;
-
-        if (actionCodeInjectBuilder_ == null) {
-          actionCodeInject_ = null;
-        } else {
-          actionCodeInject_ = null;
-          actionCodeInjectBuilder_ = null;
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return BrowserData.internal_static_FetchDataRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public BrowserData.FetchDataRequest getDefaultInstanceForType() {
-        return BrowserData.FetchDataRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public BrowserData.FetchDataRequest build() {
-        BrowserData.FetchDataRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public BrowserData.FetchDataRequest buildPartial() {
-        BrowserData.FetchDataRequest result = new BrowserData.FetchDataRequest(this);
-        result.fetchHistory_ = fetchHistory_;
-        result.fetchBookmarks_ = fetchBookmarks_;
-        if (actionCodeInjectBuilder_ == null) {
-          result.actionCodeInject_ = actionCodeInject_;
-        } else {
-          result.actionCodeInject_ = actionCodeInjectBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof BrowserData.FetchDataRequest) {
-          return mergeFrom((BrowserData.FetchDataRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(BrowserData.FetchDataRequest other) {
-        if (other == BrowserData.FetchDataRequest.getDefaultInstance()) return this;
-        if (other.getFetchHistory() != false) {
-          setFetchHistory(other.getFetchHistory());
-        }
-        if (other.getFetchBookmarks() != false) {
-          setFetchBookmarks(other.getFetchBookmarks());
-        }
-        if (other.hasActionCodeInject()) {
-          mergeActionCodeInject(other.getActionCodeInject());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                fetchHistory_ = input.readBool();
-
-                break;
-              } // case 8
-              case 16: {
-                fetchBookmarks_ = input.readBool();
-
-                break;
-              } // case 16
-              case 26: {
-                input.readMessage(
-                    getActionCodeInjectFieldBuilder().getBuilder(),
-                    extensionRegistry);
-
-                break;
-              } // case 26
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-
-      private boolean fetchHistory_ ;
       /**
        * <pre>
        * If true, request browsing history
@@ -1215,7 +750,7 @@ public final class BrowserData {
        */
       @java.lang.Override
       public boolean getFetchHistory() {
-        return fetchHistory_;
+        return instance.getFetchHistory();
       }
       /**
        * <pre>
@@ -1227,9 +762,8 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder setFetchHistory(boolean value) {
-        
-        fetchHistory_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setFetchHistory(value);
         return this;
       }
       /**
@@ -1241,13 +775,11 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder clearFetchHistory() {
-        
-        fetchHistory_ = false;
-        onChanged();
+        copyOnWrite();
+        instance.clearFetchHistory();
         return this;
       }
 
-      private boolean fetchBookmarks_ ;
       /**
        * <pre>
        * If true, request bookmarks
@@ -1258,7 +790,7 @@ public final class BrowserData {
        */
       @java.lang.Override
       public boolean getFetchBookmarks() {
-        return fetchBookmarks_;
+        return instance.getFetchBookmarks();
       }
       /**
        * <pre>
@@ -1270,9 +802,8 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder setFetchBookmarks(boolean value) {
-        
-        fetchBookmarks_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setFetchBookmarks(value);
         return this;
       }
       /**
@@ -1284,25 +815,21 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder clearFetchBookmarks() {
-        
-        fetchBookmarks_ = false;
-        onChanged();
+        copyOnWrite();
+        instance.clearFetchBookmarks();
         return this;
       }
 
-      private BrowserData.ActionCodeInject actionCodeInject_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          BrowserData.ActionCodeInject, BrowserData.ActionCodeInject.Builder, BrowserData.ActionCodeInjectOrBuilder> actionCodeInjectBuilder_;
       /**
        * <pre>
        * Action code to inject
        * </pre>
        *
        * <code>.ActionCodeInject action_code_inject = 3;</code>
-       * @return Whether the actionCodeInject field is set.
        */
+      @java.lang.Override
       public boolean hasActionCodeInject() {
-        return actionCodeInjectBuilder_ != null || actionCodeInject_ != null;
+        return instance.hasActionCodeInject();
       }
       /**
        * <pre>
@@ -1310,14 +837,10 @@ public final class BrowserData {
        * </pre>
        *
        * <code>.ActionCodeInject action_code_inject = 3;</code>
-       * @return The actionCodeInject.
        */
+      @java.lang.Override
       public BrowserData.ActionCodeInject getActionCodeInject() {
-        if (actionCodeInjectBuilder_ == null) {
-          return actionCodeInject_ == null ? BrowserData.ActionCodeInject.getDefaultInstance() : actionCodeInject_;
-        } else {
-          return actionCodeInjectBuilder_.getMessage();
-        }
+        return instance.getActionCodeInject();
       }
       /**
        * <pre>
@@ -1327,18 +850,10 @@ public final class BrowserData {
        * <code>.ActionCodeInject action_code_inject = 3;</code>
        */
       public Builder setActionCodeInject(BrowserData.ActionCodeInject value) {
-        if (actionCodeInjectBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          actionCodeInject_ = value;
-          onChanged();
-        } else {
-          actionCodeInjectBuilder_.setMessage(value);
-        }
-
+        copyOnWrite();
+        instance.setActionCodeInject(value);
         return this;
-      }
+        }
       /**
        * <pre>
        * Action code to inject
@@ -1348,13 +863,8 @@ public final class BrowserData {
        */
       public Builder setActionCodeInject(
           BrowserData.ActionCodeInject.Builder builderForValue) {
-        if (actionCodeInjectBuilder_ == null) {
-          actionCodeInject_ = builderForValue.build();
-          onChanged();
-        } else {
-          actionCodeInjectBuilder_.setMessage(builderForValue.build());
-        }
-
+        copyOnWrite();
+        instance.setActionCodeInject(builderForValue.build());
         return this;
       }
       /**
@@ -1365,18 +875,8 @@ public final class BrowserData {
        * <code>.ActionCodeInject action_code_inject = 3;</code>
        */
       public Builder mergeActionCodeInject(BrowserData.ActionCodeInject value) {
-        if (actionCodeInjectBuilder_ == null) {
-          if (actionCodeInject_ != null) {
-            actionCodeInject_ =
-              BrowserData.ActionCodeInject.newBuilder(actionCodeInject_).mergeFrom(value).buildPartial();
-          } else {
-            actionCodeInject_ = value;
-          }
-          onChanged();
-        } else {
-          actionCodeInjectBuilder_.mergeFrom(value);
-        }
-
+        copyOnWrite();
+        instance.mergeActionCodeInject(value);
         return this;
       }
       /**
@@ -1386,131 +886,91 @@ public final class BrowserData {
        *
        * <code>.ActionCodeInject action_code_inject = 3;</code>
        */
-      public Builder clearActionCodeInject() {
-        if (actionCodeInjectBuilder_ == null) {
-          actionCodeInject_ = null;
-          onChanged();
-        } else {
-          actionCodeInject_ = null;
-          actionCodeInjectBuilder_ = null;
-        }
-
+      public Builder clearActionCodeInject() {  copyOnWrite();
+        instance.clearActionCodeInject();
         return this;
       }
-      /**
-       * <pre>
-       * Action code to inject
-       * </pre>
-       *
-       * <code>.ActionCodeInject action_code_inject = 3;</code>
-       */
-      public BrowserData.ActionCodeInject.Builder getActionCodeInjectBuilder() {
-        
-        onChanged();
-        return getActionCodeInjectFieldBuilder().getBuilder();
-      }
-      /**
-       * <pre>
-       * Action code to inject
-       * </pre>
-       *
-       * <code>.ActionCodeInject action_code_inject = 3;</code>
-       */
-      public BrowserData.ActionCodeInjectOrBuilder getActionCodeInjectOrBuilder() {
-        if (actionCodeInjectBuilder_ != null) {
-          return actionCodeInjectBuilder_.getMessageOrBuilder();
-        } else {
-          return actionCodeInject_ == null ?
-              BrowserData.ActionCodeInject.getDefaultInstance() : actionCodeInject_;
-        }
-      }
-      /**
-       * <pre>
-       * Action code to inject
-       * </pre>
-       *
-       * <code>.ActionCodeInject action_code_inject = 3;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          BrowserData.ActionCodeInject, BrowserData.ActionCodeInject.Builder, BrowserData.ActionCodeInjectOrBuilder> 
-          getActionCodeInjectFieldBuilder() {
-        if (actionCodeInjectBuilder_ == null) {
-          actionCodeInjectBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              BrowserData.ActionCodeInject, BrowserData.ActionCodeInject.Builder, BrowserData.ActionCodeInjectOrBuilder>(
-                  getActionCodeInject(),
-                  getParentForChildren(),
-                  isClean());
-          actionCodeInject_ = null;
-        }
-        return actionCodeInjectBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:FetchDataRequest)
     }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new BrowserData.FetchDataRequest();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "fetchHistory_",
+              "fetchBookmarks_",
+              "actionCodeInject_",
+            };
+            java.lang.String info =
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0007\u0002\u0007" +
+                "\u0003\t";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<BrowserData.FetchDataRequest> parser = PARSER;
+          if (parser == null) {
+            synchronized (BrowserData.FetchDataRequest.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<BrowserData.FetchDataRequest>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
 
     // @@protoc_insertion_point(class_scope:FetchDataRequest)
     private static final BrowserData.FetchDataRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new BrowserData.FetchDataRequest();
+      FetchDataRequest defaultInstance = new FetchDataRequest();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FetchDataRequest.class, defaultInstance);
     }
 
     public static BrowserData.FetchDataRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FetchDataRequest>
-        PARSER = new com.google.protobuf.AbstractParser<FetchDataRequest>() {
-      @java.lang.Override
-      public FetchDataRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
+    private static volatile com.google.protobuf.Parser<FetchDataRequest> PARSER;
 
     public static com.google.protobuf.Parser<FetchDataRequest> parser() {
-      return PARSER;
+      return DEFAULT_INSTANCE.getParserForType();
     }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<FetchDataRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public BrowserData.FetchDataRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
   }
 
   public interface FetchDataResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:FetchDataResponse)
-      com.google.protobuf.MessageOrBuilder {
+      com.google.protobuf.MessageLiteOrBuilder {
 
     /**
      * <pre>
@@ -1570,14 +1030,6 @@ public final class BrowserData {
      * @return The actionResponse.
      */
     BrowserData.ActionResponse getActionResponse();
-    /**
-     * <pre>
-     * Response to the action
-     * </pre>
-     *
-     * <code>.ActionResponse action_response = 3;</code>
-     */
-    BrowserData.ActionResponseOrBuilder getActionResponseOrBuilder();
   }
   /**
    * <pre>
@@ -1586,47 +1038,17 @@ public final class BrowserData {
    *
    * Protobuf type {@code FetchDataResponse}
    */
-  public static final class FetchDataResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public  static final class FetchDataResponse extends
+      com.google.protobuf.GeneratedMessageLite<
+          FetchDataResponse, FetchDataResponse.Builder> implements
       // @@protoc_insertion_point(message_implements:FetchDataResponse)
       FetchDataResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use FetchDataResponse.newBuilder() to construct.
-    private FetchDataResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
     private FetchDataResponse() {
       history_ = "";
       bookmarks_ = "";
     }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new FetchDataResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return BrowserData.internal_static_FetchDataResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return BrowserData.internal_static_FetchDataResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              BrowserData.FetchDataResponse.class, BrowserData.FetchDataResponse.Builder.class);
-    }
-
     public static final int HISTORY_FIELD_NUMBER = 1;
-    private volatile java.lang.Object history_;
+    private java.lang.String history_;
     /**
      * <pre>
      * Browsing history data as a string
@@ -1637,16 +1059,7 @@ public final class BrowserData {
      */
     @java.lang.Override
     public java.lang.String getHistory() {
-      java.lang.Object ref = history_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        history_ = s;
-        return s;
-      }
+      return history_;
     }
     /**
      * <pre>
@@ -1659,20 +1072,50 @@ public final class BrowserData {
     @java.lang.Override
     public com.google.protobuf.ByteString
         getHistoryBytes() {
-      java.lang.Object ref = history_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        history_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+      return com.google.protobuf.ByteString.copyFromUtf8(history_);
+    }
+    /**
+     * <pre>
+     * Browsing history data as a string
+     * </pre>
+     *
+     * <code>string history = 1;</code>
+     * @param value The history to set.
+     */
+    private void setHistory(
+        java.lang.String value) {
+      java.lang.Class<?> valueClass = value.getClass();
+  
+      history_ = value;
+    }
+    /**
+     * <pre>
+     * Browsing history data as a string
+     * </pre>
+     *
+     * <code>string history = 1;</code>
+     */
+    private void clearHistory() {
+      
+      history_ = getDefaultInstance().getHistory();
+    }
+    /**
+     * <pre>
+     * Browsing history data as a string
+     * </pre>
+     *
+     * <code>string history = 1;</code>
+     * @param value The bytes for history to set.
+     */
+    private void setHistoryBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      history_ = value.toStringUtf8();
+      
     }
 
     public static final int BOOKMARKS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object bookmarks_;
+    private java.lang.String bookmarks_;
     /**
      * <pre>
      * Bookmarks data as a string
@@ -1683,16 +1126,7 @@ public final class BrowserData {
      */
     @java.lang.Override
     public java.lang.String getBookmarks() {
-      java.lang.Object ref = bookmarks_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        bookmarks_ = s;
-        return s;
-      }
+      return bookmarks_;
     }
     /**
      * <pre>
@@ -1705,16 +1139,46 @@ public final class BrowserData {
     @java.lang.Override
     public com.google.protobuf.ByteString
         getBookmarksBytes() {
-      java.lang.Object ref = bookmarks_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        bookmarks_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+      return com.google.protobuf.ByteString.copyFromUtf8(bookmarks_);
+    }
+    /**
+     * <pre>
+     * Bookmarks data as a string
+     * </pre>
+     *
+     * <code>string bookmarks = 2;</code>
+     * @param value The bookmarks to set.
+     */
+    private void setBookmarks(
+        java.lang.String value) {
+      java.lang.Class<?> valueClass = value.getClass();
+  
+      bookmarks_ = value;
+    }
+    /**
+     * <pre>
+     * Bookmarks data as a string
+     * </pre>
+     *
+     * <code>string bookmarks = 2;</code>
+     */
+    private void clearBookmarks() {
+      
+      bookmarks_ = getDefaultInstance().getBookmarks();
+    }
+    /**
+     * <pre>
+     * Bookmarks data as a string
+     * </pre>
+     *
+     * <code>string bookmarks = 2;</code>
+     * @param value The bytes for bookmarks to set.
+     */
+    private void setBookmarksBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      bookmarks_ = value.toStringUtf8();
+      
     }
 
     public static final int ACTION_RESPONSE_FIELD_NUMBER = 3;
@@ -1725,7 +1189,6 @@ public final class BrowserData {
      * </pre>
      *
      * <code>.ActionResponse action_response = 3;</code>
-     * @return Whether the actionResponse field is set.
      */
     @java.lang.Override
     public boolean hasActionResponse() {
@@ -1737,7 +1200,6 @@ public final class BrowserData {
      * </pre>
      *
      * <code>.ActionResponse action_response = 3;</code>
-     * @return The actionResponse.
      */
     @java.lang.Override
     public BrowserData.ActionResponse getActionResponse() {
@@ -1750,191 +1212,122 @@ public final class BrowserData {
      *
      * <code>.ActionResponse action_response = 3;</code>
      */
-    @java.lang.Override
-    public BrowserData.ActionResponseOrBuilder getActionResponseOrBuilder() {
-      return getActionResponse();
+    private void setActionResponse(BrowserData.ActionResponse value) {
+      value.getClass();
+  actionResponse_ = value;
+      
+      }
+    /**
+     * <pre>
+     * Response to the action
+     * </pre>
+     *
+     * <code>.ActionResponse action_response = 3;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeActionResponse(BrowserData.ActionResponse value) {
+      value.getClass();
+  if (actionResponse_ != null &&
+          actionResponse_ != BrowserData.ActionResponse.getDefaultInstance()) {
+        actionResponse_ =
+          BrowserData.ActionResponse.newBuilder(actionResponse_).mergeFrom(value).buildPartial();
+      } else {
+        actionResponse_ = value;
+      }
+      
     }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(history_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, history_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bookmarks_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, bookmarks_);
-      }
-      if (actionResponse_ != null) {
-        output.writeMessage(3, getActionResponse());
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(history_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, history_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bookmarks_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, bookmarks_);
-      }
-      if (actionResponse_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getActionResponse());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof BrowserData.FetchDataResponse)) {
-        return super.equals(obj);
-      }
-      BrowserData.FetchDataResponse other = (BrowserData.FetchDataResponse) obj;
-
-      if (!getHistory()
-          .equals(other.getHistory())) return false;
-      if (!getBookmarks()
-          .equals(other.getBookmarks())) return false;
-      if (hasActionResponse() != other.hasActionResponse()) return false;
-      if (hasActionResponse()) {
-        if (!getActionResponse()
-            .equals(other.getActionResponse())) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + HISTORY_FIELD_NUMBER;
-      hash = (53 * hash) + getHistory().hashCode();
-      hash = (37 * hash) + BOOKMARKS_FIELD_NUMBER;
-      hash = (53 * hash) + getBookmarks().hashCode();
-      if (hasActionResponse()) {
-        hash = (37 * hash) + ACTION_RESPONSE_FIELD_NUMBER;
-        hash = (53 * hash) + getActionResponse().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
+    /**
+     * <pre>
+     * Response to the action
+     * </pre>
+     *
+     * <code>.ActionResponse action_response = 3;</code>
+     */
+    private void clearActionResponse() {  actionResponse_ = null;
+      
     }
 
     public static BrowserData.FetchDataResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.FetchDataResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.FetchDataResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.FetchDataResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.FetchDataResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.FetchDataResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.FetchDataResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
     }
     public static BrowserData.FetchDataResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
     }
     public static BrowserData.FetchDataResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
     public static BrowserData.FetchDataResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
     public static BrowserData.FetchDataResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
     }
     public static BrowserData.FetchDataResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
     }
 
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
     public static Builder newBuilder(BrowserData.FetchDataResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * <pre>
      * Response message containing browser data
@@ -1943,197 +1336,16 @@ public final class BrowserData {
      * Protobuf type {@code FetchDataResponse}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          BrowserData.FetchDataResponse, Builder> implements
         // @@protoc_insertion_point(builder_implements:FetchDataResponse)
         BrowserData.FetchDataResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return BrowserData.internal_static_FetchDataResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return BrowserData.internal_static_FetchDataResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                BrowserData.FetchDataResponse.class, BrowserData.FetchDataResponse.Builder.class);
-      }
-
       // Construct using BrowserData.FetchDataResponse.newBuilder()
       private Builder() {
-
+        super(DEFAULT_INSTANCE);
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
 
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        history_ = "";
-
-        bookmarks_ = "";
-
-        if (actionResponseBuilder_ == null) {
-          actionResponse_ = null;
-        } else {
-          actionResponse_ = null;
-          actionResponseBuilder_ = null;
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return BrowserData.internal_static_FetchDataResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public BrowserData.FetchDataResponse getDefaultInstanceForType() {
-        return BrowserData.FetchDataResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public BrowserData.FetchDataResponse build() {
-        BrowserData.FetchDataResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public BrowserData.FetchDataResponse buildPartial() {
-        BrowserData.FetchDataResponse result = new BrowserData.FetchDataResponse(this);
-        result.history_ = history_;
-        result.bookmarks_ = bookmarks_;
-        if (actionResponseBuilder_ == null) {
-          result.actionResponse_ = actionResponse_;
-        } else {
-          result.actionResponse_ = actionResponseBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof BrowserData.FetchDataResponse) {
-          return mergeFrom((BrowserData.FetchDataResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(BrowserData.FetchDataResponse other) {
-        if (other == BrowserData.FetchDataResponse.getDefaultInstance()) return this;
-        if (!other.getHistory().isEmpty()) {
-          history_ = other.history_;
-          onChanged();
-        }
-        if (!other.getBookmarks().isEmpty()) {
-          bookmarks_ = other.bookmarks_;
-          onChanged();
-        }
-        if (other.hasActionResponse()) {
-          mergeActionResponse(other.getActionResponse());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                history_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 10
-              case 18: {
-                bookmarks_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 18
-              case 26: {
-                input.readMessage(
-                    getActionResponseFieldBuilder().getBuilder(),
-                    extensionRegistry);
-
-                break;
-              } // case 26
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-
-      private java.lang.Object history_ = "";
       /**
        * <pre>
        * Browsing history data as a string
@@ -2142,17 +1354,9 @@ public final class BrowserData {
        * <code>string history = 1;</code>
        * @return The history.
        */
+      @java.lang.Override
       public java.lang.String getHistory() {
-        java.lang.Object ref = history_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          history_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+        return instance.getHistory();
       }
       /**
        * <pre>
@@ -2162,18 +1366,10 @@ public final class BrowserData {
        * <code>string history = 1;</code>
        * @return The bytes for history.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getHistoryBytes() {
-        java.lang.Object ref = history_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          history_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+        return instance.getHistoryBytes();
       }
       /**
        * <pre>
@@ -2186,12 +1382,8 @@ public final class BrowserData {
        */
       public Builder setHistory(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        history_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setHistory(value);
         return this;
       }
       /**
@@ -2203,9 +1395,8 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder clearHistory() {
-        
-        history_ = getDefaultInstance().getHistory();
-        onChanged();
+        copyOnWrite();
+        instance.clearHistory();
         return this;
       }
       /**
@@ -2219,17 +1410,11 @@ public final class BrowserData {
        */
       public Builder setHistoryBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        history_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setHistoryBytes(value);
         return this;
       }
 
-      private java.lang.Object bookmarks_ = "";
       /**
        * <pre>
        * Bookmarks data as a string
@@ -2238,17 +1423,9 @@ public final class BrowserData {
        * <code>string bookmarks = 2;</code>
        * @return The bookmarks.
        */
+      @java.lang.Override
       public java.lang.String getBookmarks() {
-        java.lang.Object ref = bookmarks_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          bookmarks_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+        return instance.getBookmarks();
       }
       /**
        * <pre>
@@ -2258,18 +1435,10 @@ public final class BrowserData {
        * <code>string bookmarks = 2;</code>
        * @return The bytes for bookmarks.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getBookmarksBytes() {
-        java.lang.Object ref = bookmarks_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          bookmarks_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+        return instance.getBookmarksBytes();
       }
       /**
        * <pre>
@@ -2282,12 +1451,8 @@ public final class BrowserData {
        */
       public Builder setBookmarks(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        bookmarks_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setBookmarks(value);
         return this;
       }
       /**
@@ -2299,9 +1464,8 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder clearBookmarks() {
-        
-        bookmarks_ = getDefaultInstance().getBookmarks();
-        onChanged();
+        copyOnWrite();
+        instance.clearBookmarks();
         return this;
       }
       /**
@@ -2315,29 +1479,21 @@ public final class BrowserData {
        */
       public Builder setBookmarksBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        bookmarks_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setBookmarksBytes(value);
         return this;
       }
 
-      private BrowserData.ActionResponse actionResponse_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          BrowserData.ActionResponse, BrowserData.ActionResponse.Builder, BrowserData.ActionResponseOrBuilder> actionResponseBuilder_;
       /**
        * <pre>
        * Response to the action
        * </pre>
        *
        * <code>.ActionResponse action_response = 3;</code>
-       * @return Whether the actionResponse field is set.
        */
+      @java.lang.Override
       public boolean hasActionResponse() {
-        return actionResponseBuilder_ != null || actionResponse_ != null;
+        return instance.hasActionResponse();
       }
       /**
        * <pre>
@@ -2345,14 +1501,10 @@ public final class BrowserData {
        * </pre>
        *
        * <code>.ActionResponse action_response = 3;</code>
-       * @return The actionResponse.
        */
+      @java.lang.Override
       public BrowserData.ActionResponse getActionResponse() {
-        if (actionResponseBuilder_ == null) {
-          return actionResponse_ == null ? BrowserData.ActionResponse.getDefaultInstance() : actionResponse_;
-        } else {
-          return actionResponseBuilder_.getMessage();
-        }
+        return instance.getActionResponse();
       }
       /**
        * <pre>
@@ -2362,18 +1514,10 @@ public final class BrowserData {
        * <code>.ActionResponse action_response = 3;</code>
        */
       public Builder setActionResponse(BrowserData.ActionResponse value) {
-        if (actionResponseBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          actionResponse_ = value;
-          onChanged();
-        } else {
-          actionResponseBuilder_.setMessage(value);
-        }
-
+        copyOnWrite();
+        instance.setActionResponse(value);
         return this;
-      }
+        }
       /**
        * <pre>
        * Response to the action
@@ -2383,13 +1527,8 @@ public final class BrowserData {
        */
       public Builder setActionResponse(
           BrowserData.ActionResponse.Builder builderForValue) {
-        if (actionResponseBuilder_ == null) {
-          actionResponse_ = builderForValue.build();
-          onChanged();
-        } else {
-          actionResponseBuilder_.setMessage(builderForValue.build());
-        }
-
+        copyOnWrite();
+        instance.setActionResponse(builderForValue.build());
         return this;
       }
       /**
@@ -2400,18 +1539,8 @@ public final class BrowserData {
        * <code>.ActionResponse action_response = 3;</code>
        */
       public Builder mergeActionResponse(BrowserData.ActionResponse value) {
-        if (actionResponseBuilder_ == null) {
-          if (actionResponse_ != null) {
-            actionResponse_ =
-              BrowserData.ActionResponse.newBuilder(actionResponse_).mergeFrom(value).buildPartial();
-          } else {
-            actionResponse_ = value;
-          }
-          onChanged();
-        } else {
-          actionResponseBuilder_.mergeFrom(value);
-        }
-
+        copyOnWrite();
+        instance.mergeActionResponse(value);
         return this;
       }
       /**
@@ -2421,131 +1550,91 @@ public final class BrowserData {
        *
        * <code>.ActionResponse action_response = 3;</code>
        */
-      public Builder clearActionResponse() {
-        if (actionResponseBuilder_ == null) {
-          actionResponse_ = null;
-          onChanged();
-        } else {
-          actionResponse_ = null;
-          actionResponseBuilder_ = null;
-        }
-
+      public Builder clearActionResponse() {  copyOnWrite();
+        instance.clearActionResponse();
         return this;
       }
-      /**
-       * <pre>
-       * Response to the action
-       * </pre>
-       *
-       * <code>.ActionResponse action_response = 3;</code>
-       */
-      public BrowserData.ActionResponse.Builder getActionResponseBuilder() {
-        
-        onChanged();
-        return getActionResponseFieldBuilder().getBuilder();
-      }
-      /**
-       * <pre>
-       * Response to the action
-       * </pre>
-       *
-       * <code>.ActionResponse action_response = 3;</code>
-       */
-      public BrowserData.ActionResponseOrBuilder getActionResponseOrBuilder() {
-        if (actionResponseBuilder_ != null) {
-          return actionResponseBuilder_.getMessageOrBuilder();
-        } else {
-          return actionResponse_ == null ?
-              BrowserData.ActionResponse.getDefaultInstance() : actionResponse_;
-        }
-      }
-      /**
-       * <pre>
-       * Response to the action
-       * </pre>
-       *
-       * <code>.ActionResponse action_response = 3;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          BrowserData.ActionResponse, BrowserData.ActionResponse.Builder, BrowserData.ActionResponseOrBuilder> 
-          getActionResponseFieldBuilder() {
-        if (actionResponseBuilder_ == null) {
-          actionResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              BrowserData.ActionResponse, BrowserData.ActionResponse.Builder, BrowserData.ActionResponseOrBuilder>(
-                  getActionResponse(),
-                  getParentForChildren(),
-                  isClean());
-          actionResponse_ = null;
-        }
-        return actionResponseBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:FetchDataResponse)
     }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new BrowserData.FetchDataResponse();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "history_",
+              "bookmarks_",
+              "actionResponse_",
+            };
+            java.lang.String info =
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+                "\u0003\t";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<BrowserData.FetchDataResponse> parser = PARSER;
+          if (parser == null) {
+            synchronized (BrowserData.FetchDataResponse.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<BrowserData.FetchDataResponse>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
 
     // @@protoc_insertion_point(class_scope:FetchDataResponse)
     private static final BrowserData.FetchDataResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new BrowserData.FetchDataResponse();
+      FetchDataResponse defaultInstance = new FetchDataResponse();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FetchDataResponse.class, defaultInstance);
     }
 
     public static BrowserData.FetchDataResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FetchDataResponse>
-        PARSER = new com.google.protobuf.AbstractParser<FetchDataResponse>() {
-      @java.lang.Override
-      public FetchDataResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
+    private static volatile com.google.protobuf.Parser<FetchDataResponse> PARSER;
 
     public static com.google.protobuf.Parser<FetchDataResponse> parser() {
-      return PARSER;
+      return DEFAULT_INSTANCE.getParserForType();
     }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<FetchDataResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public BrowserData.FetchDataResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
   }
 
   public interface ActionResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ActionResponse)
-      com.google.protobuf.MessageOrBuilder {
+      com.google.protobuf.MessageLiteOrBuilder {
 
     /**
      * <pre>
@@ -2584,44 +1673,14 @@ public final class BrowserData {
    *
    * Protobuf type {@code ActionResponse}
    */
-  public static final class ActionResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public  static final class ActionResponse extends
+      com.google.protobuf.GeneratedMessageLite<
+          ActionResponse, ActionResponse.Builder> implements
       // @@protoc_insertion_point(message_implements:ActionResponse)
       ActionResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ActionResponse.newBuilder() to construct.
-    private ActionResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
     private ActionResponse() {
       message_ = "";
     }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ActionResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return BrowserData.internal_static_ActionResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return BrowserData.internal_static_ActionResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              BrowserData.ActionResponse.class, BrowserData.ActionResponse.Builder.class);
-    }
-
     public static final int STATUS_CODE_FIELD_NUMBER = 1;
     private int statusCode_;
     /**
@@ -2636,9 +1695,32 @@ public final class BrowserData {
     public int getStatusCode() {
       return statusCode_;
     }
+    /**
+     * <pre>
+     * Status code of the action
+     * </pre>
+     *
+     * <code>int32 status_code = 1;</code>
+     * @param value The statusCode to set.
+     */
+    private void setStatusCode(int value) {
+      
+      statusCode_ = value;
+    }
+    /**
+     * <pre>
+     * Status code of the action
+     * </pre>
+     *
+     * <code>int32 status_code = 1;</code>
+     */
+    private void clearStatusCode() {
+      
+      statusCode_ = 0;
+    }
 
     public static final int MESSAGE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object message_;
+    private java.lang.String message_;
     /**
      * <pre>
      * Message describing the action
@@ -2649,16 +1731,7 @@ public final class BrowserData {
      */
     @java.lang.Override
     public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        message_ = s;
-        return s;
-      }
+      return message_;
     }
     /**
      * <pre>
@@ -2671,183 +1744,129 @@ public final class BrowserData {
     @java.lang.Override
     public com.google.protobuf.ByteString
         getMessageBytes() {
-      java.lang.Object ref = message_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        message_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+      return com.google.protobuf.ByteString.copyFromUtf8(message_);
     }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
+    /**
+     * <pre>
+     * Message describing the action
+     * </pre>
+     *
+     * <code>string message = 2;</code>
+     * @param value The message to set.
+     */
+    private void setMessage(
+        java.lang.String value) {
+      java.lang.Class<?> valueClass = value.getClass();
+  
+      message_ = value;
     }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (statusCode_ != 0) {
-        output.writeInt32(1, statusCode_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
-      }
-      getUnknownFields().writeTo(output);
+    /**
+     * <pre>
+     * Message describing the action
+     * </pre>
+     *
+     * <code>string message = 2;</code>
+     */
+    private void clearMessage() {
+      
+      message_ = getDefaultInstance().getMessage();
     }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (statusCode_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, statusCode_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof BrowserData.ActionResponse)) {
-        return super.equals(obj);
-      }
-      BrowserData.ActionResponse other = (BrowserData.ActionResponse) obj;
-
-      if (getStatusCode()
-          != other.getStatusCode()) return false;
-      if (!getMessage()
-          .equals(other.getMessage())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getStatusCode();
-      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getMessage().hashCode();
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
+    /**
+     * <pre>
+     * Message describing the action
+     * </pre>
+     *
+     * <code>string message = 2;</code>
+     * @param value The bytes for message to set.
+     */
+    private void setMessageBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      message_ = value.toStringUtf8();
+      
     }
 
     public static BrowserData.ActionResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.ActionResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.ActionResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.ActionResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.ActionResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.ActionResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.ActionResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
     }
     public static BrowserData.ActionResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
     }
     public static BrowserData.ActionResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
     public static BrowserData.ActionResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
     public static BrowserData.ActionResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
     }
     public static BrowserData.ActionResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
     }
 
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
     public static Builder newBuilder(BrowserData.ActionResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * <pre>
      * Action response message
@@ -2856,175 +1875,16 @@ public final class BrowserData {
      * Protobuf type {@code ActionResponse}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          BrowserData.ActionResponse, Builder> implements
         // @@protoc_insertion_point(builder_implements:ActionResponse)
         BrowserData.ActionResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return BrowserData.internal_static_ActionResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return BrowserData.internal_static_ActionResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                BrowserData.ActionResponse.class, BrowserData.ActionResponse.Builder.class);
-      }
-
       // Construct using BrowserData.ActionResponse.newBuilder()
       private Builder() {
-
+        super(DEFAULT_INSTANCE);
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
 
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        statusCode_ = 0;
-
-        message_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return BrowserData.internal_static_ActionResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public BrowserData.ActionResponse getDefaultInstanceForType() {
-        return BrowserData.ActionResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public BrowserData.ActionResponse build() {
-        BrowserData.ActionResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public BrowserData.ActionResponse buildPartial() {
-        BrowserData.ActionResponse result = new BrowserData.ActionResponse(this);
-        result.statusCode_ = statusCode_;
-        result.message_ = message_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof BrowserData.ActionResponse) {
-          return mergeFrom((BrowserData.ActionResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(BrowserData.ActionResponse other) {
-        if (other == BrowserData.ActionResponse.getDefaultInstance()) return this;
-        if (other.getStatusCode() != 0) {
-          setStatusCode(other.getStatusCode());
-        }
-        if (!other.getMessage().isEmpty()) {
-          message_ = other.message_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                statusCode_ = input.readInt32();
-
-                break;
-              } // case 8
-              case 18: {
-                message_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 18
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-
-      private int statusCode_ ;
       /**
        * <pre>
        * Status code of the action
@@ -3035,7 +1895,7 @@ public final class BrowserData {
        */
       @java.lang.Override
       public int getStatusCode() {
-        return statusCode_;
+        return instance.getStatusCode();
       }
       /**
        * <pre>
@@ -3047,9 +1907,8 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder setStatusCode(int value) {
-        
-        statusCode_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setStatusCode(value);
         return this;
       }
       /**
@@ -3061,13 +1920,11 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder clearStatusCode() {
-        
-        statusCode_ = 0;
-        onChanged();
+        copyOnWrite();
+        instance.clearStatusCode();
         return this;
       }
 
-      private java.lang.Object message_ = "";
       /**
        * <pre>
        * Message describing the action
@@ -3076,17 +1933,9 @@ public final class BrowserData {
        * <code>string message = 2;</code>
        * @return The message.
        */
+      @java.lang.Override
       public java.lang.String getMessage() {
-        java.lang.Object ref = message_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          message_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+        return instance.getMessage();
       }
       /**
        * <pre>
@@ -3096,18 +1945,10 @@ public final class BrowserData {
        * <code>string message = 2;</code>
        * @return The bytes for message.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getMessageBytes() {
-        java.lang.Object ref = message_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          message_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+        return instance.getMessageBytes();
       }
       /**
        * <pre>
@@ -3120,12 +1961,8 @@ public final class BrowserData {
        */
       public Builder setMessage(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        message_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setMessage(value);
         return this;
       }
       /**
@@ -3137,9 +1974,8 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder clearMessage() {
-        
-        message_ = getDefaultInstance().getMessage();
-        onChanged();
+        copyOnWrite();
+        instance.clearMessage();
         return this;
       }
       /**
@@ -3153,82 +1989,90 @@ public final class BrowserData {
        */
       public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        message_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setMessageBytes(value);
         return this;
       }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:ActionResponse)
     }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new BrowserData.ActionResponse();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "statusCode_",
+              "message_",
+            };
+            java.lang.String info =
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0004\u0002\u0208" +
+                "";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<BrowserData.ActionResponse> parser = PARSER;
+          if (parser == null) {
+            synchronized (BrowserData.ActionResponse.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<BrowserData.ActionResponse>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
 
     // @@protoc_insertion_point(class_scope:ActionResponse)
     private static final BrowserData.ActionResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new BrowserData.ActionResponse();
+      ActionResponse defaultInstance = new ActionResponse();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        ActionResponse.class, defaultInstance);
     }
 
     public static BrowserData.ActionResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ActionResponse>
-        PARSER = new com.google.protobuf.AbstractParser<ActionResponse>() {
-      @java.lang.Override
-      public ActionResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
+    private static volatile com.google.protobuf.Parser<ActionResponse> PARSER;
 
     public static com.google.protobuf.Parser<ActionResponse> parser() {
-      return PARSER;
+      return DEFAULT_INSTANCE.getParserForType();
     }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ActionResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public BrowserData.ActionResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
   }
 
   public interface WrapperMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:WrapperMessage)
-      com.google.protobuf.MessageOrBuilder {
+      com.google.protobuf.MessageLiteOrBuilder {
 
     /**
      * <code>.WrapperMessage.MessageType type = 1;</code>
@@ -3251,10 +2095,6 @@ public final class BrowserData {
      * @return The request.
      */
     BrowserData.FetchDataRequest getRequest();
-    /**
-     * <code>.FetchDataRequest request = 2;</code>
-     */
-    BrowserData.FetchDataRequestOrBuilder getRequestOrBuilder();
 
     /**
      * <code>.FetchDataResponse response = 3;</code>
@@ -3266,10 +2106,6 @@ public final class BrowserData {
      * @return The response.
      */
     BrowserData.FetchDataResponse getResponse();
-    /**
-     * <code>.FetchDataResponse response = 3;</code>
-     */
-    BrowserData.FetchDataResponseOrBuilder getResponseOrBuilder();
   }
   /**
    * <pre>
@@ -3278,49 +2114,18 @@ public final class BrowserData {
    *
    * Protobuf type {@code WrapperMessage}
    */
-  public static final class WrapperMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public  static final class WrapperMessage extends
+      com.google.protobuf.GeneratedMessageLite<
+          WrapperMessage, WrapperMessage.Builder> implements
       // @@protoc_insertion_point(message_implements:WrapperMessage)
       WrapperMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use WrapperMessage.newBuilder() to construct.
-    private WrapperMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
     private WrapperMessage() {
-      type_ = 0;
     }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new WrapperMessage();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return BrowserData.internal_static_WrapperMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return BrowserData.internal_static_WrapperMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              BrowserData.WrapperMessage.class, BrowserData.WrapperMessage.Builder.class);
-    }
-
     /**
      * Protobuf enum {@code WrapperMessage.MessageType}
      */
     public enum MessageType
-        implements com.google.protobuf.ProtocolMessageEnum {
+        implements com.google.protobuf.Internal.EnumLite {
       /**
        * <code>REQUEST = 0;</code>
        */
@@ -3342,6 +2147,7 @@ public final class BrowserData {
       public static final int RESPONSE_VALUE = 1;
 
 
+      @java.lang.Override
       public final int getNumber() {
         if (this == UNRECOGNIZED) {
           throw new java.lang.IllegalArgumentException(
@@ -3351,8 +2157,8 @@ public final class BrowserData {
       }
 
       /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
@@ -3360,10 +2166,6 @@ public final class BrowserData {
         return forNumber(value);
       }
 
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       */
       public static MessageType forNumber(int value) {
         switch (value) {
           case 0: return REQUEST;
@@ -3379,41 +2181,25 @@ public final class BrowserData {
       private static final com.google.protobuf.Internal.EnumLiteMap<
           MessageType> internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<MessageType>() {
+              @java.lang.Override
               public MessageType findValueByNumber(int number) {
                 return MessageType.forNumber(number);
               }
             };
 
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalStateException(
-              "Can't get the descriptor of an unrecognized enum value.");
-        }
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return BrowserData.WrapperMessage.getDescriptor().getEnumTypes().get(0);
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return MessageTypeVerifier.INSTANCE;
       }
 
-      private static final MessageType[] VALUES = values();
-
-      public static MessageType valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
-        return VALUES[desc.getIndex()];
-      }
+      private static final class MessageTypeVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new MessageTypeVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return MessageType.forNumber(number) != null;
+              }
+            };
 
       private final int value;
 
@@ -3430,24 +2216,46 @@ public final class BrowserData {
      * <code>.WrapperMessage.MessageType type = 1;</code>
      * @return The enum numeric value on the wire for type.
      */
-    @java.lang.Override public int getTypeValue() {
+    @java.lang.Override
+    public int getTypeValue() {
       return type_;
     }
     /**
      * <code>.WrapperMessage.MessageType type = 1;</code>
      * @return The type.
      */
-    @java.lang.Override public BrowserData.WrapperMessage.MessageType getType() {
-      @SuppressWarnings("deprecation")
-      BrowserData.WrapperMessage.MessageType result = BrowserData.WrapperMessage.MessageType.valueOf(type_);
+    @java.lang.Override
+    public BrowserData.WrapperMessage.MessageType getType() {
+      BrowserData.WrapperMessage.MessageType result = BrowserData.WrapperMessage.MessageType.forNumber(type_);
       return result == null ? BrowserData.WrapperMessage.MessageType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.WrapperMessage.MessageType type = 1;</code>
+     * @param value The enum numeric value on the wire for type to set.
+     */
+    private void setTypeValue(int value) {
+        type_ = value;
+    }
+    /**
+     * <code>.WrapperMessage.MessageType type = 1;</code>
+     * @param value The type to set.
+     */
+    private void setType(BrowserData.WrapperMessage.MessageType value) {
+      type_ = value.getNumber();
+      
+    }
+    /**
+     * <code>.WrapperMessage.MessageType type = 1;</code>
+     */
+    private void clearType() {
+      
+      type_ = 0;
     }
 
     public static final int REQUEST_FIELD_NUMBER = 2;
     private BrowserData.FetchDataRequest request_;
     /**
      * <code>.FetchDataRequest request = 2;</code>
-     * @return Whether the request field is set.
      */
     @java.lang.Override
     public boolean hasRequest() {
@@ -3455,7 +2263,6 @@ public final class BrowserData {
     }
     /**
      * <code>.FetchDataRequest request = 2;</code>
-     * @return The request.
      */
     @java.lang.Override
     public BrowserData.FetchDataRequest getRequest() {
@@ -3464,16 +2271,37 @@ public final class BrowserData {
     /**
      * <code>.FetchDataRequest request = 2;</code>
      */
-    @java.lang.Override
-    public BrowserData.FetchDataRequestOrBuilder getRequestOrBuilder() {
-      return getRequest();
+    private void setRequest(BrowserData.FetchDataRequest value) {
+      value.getClass();
+  request_ = value;
+      
+      }
+    /**
+     * <code>.FetchDataRequest request = 2;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeRequest(BrowserData.FetchDataRequest value) {
+      value.getClass();
+  if (request_ != null &&
+          request_ != BrowserData.FetchDataRequest.getDefaultInstance()) {
+        request_ =
+          BrowserData.FetchDataRequest.newBuilder(request_).mergeFrom(value).buildPartial();
+      } else {
+        request_ = value;
+      }
+      
+    }
+    /**
+     * <code>.FetchDataRequest request = 2;</code>
+     */
+    private void clearRequest() {  request_ = null;
+      
     }
 
     public static final int RESPONSE_FIELD_NUMBER = 3;
     private BrowserData.FetchDataResponse response_;
     /**
      * <code>.FetchDataResponse response = 3;</code>
-     * @return Whether the response field is set.
      */
     @java.lang.Override
     public boolean hasResponse() {
@@ -3481,7 +2309,6 @@ public final class BrowserData {
     }
     /**
      * <code>.FetchDataResponse response = 3;</code>
-     * @return The response.
      */
     @java.lang.Override
     public BrowserData.FetchDataResponse getResponse() {
@@ -3490,197 +2317,114 @@ public final class BrowserData {
     /**
      * <code>.FetchDataResponse response = 3;</code>
      */
-    @java.lang.Override
-    public BrowserData.FetchDataResponseOrBuilder getResponseOrBuilder() {
-      return getResponse();
+    private void setResponse(BrowserData.FetchDataResponse value) {
+      value.getClass();
+  response_ = value;
+      
+      }
+    /**
+     * <code>.FetchDataResponse response = 3;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeResponse(BrowserData.FetchDataResponse value) {
+      value.getClass();
+  if (response_ != null &&
+          response_ != BrowserData.FetchDataResponse.getDefaultInstance()) {
+        response_ =
+          BrowserData.FetchDataResponse.newBuilder(response_).mergeFrom(value).buildPartial();
+      } else {
+        response_ = value;
+      }
+      
     }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (type_ != BrowserData.WrapperMessage.MessageType.REQUEST.getNumber()) {
-        output.writeEnum(1, type_);
-      }
-      if (request_ != null) {
-        output.writeMessage(2, getRequest());
-      }
-      if (response_ != null) {
-        output.writeMessage(3, getResponse());
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (type_ != BrowserData.WrapperMessage.MessageType.REQUEST.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_);
-      }
-      if (request_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getRequest());
-      }
-      if (response_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getResponse());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof BrowserData.WrapperMessage)) {
-        return super.equals(obj);
-      }
-      BrowserData.WrapperMessage other = (BrowserData.WrapperMessage) obj;
-
-      if (type_ != other.type_) return false;
-      if (hasRequest() != other.hasRequest()) return false;
-      if (hasRequest()) {
-        if (!getRequest()
-            .equals(other.getRequest())) return false;
-      }
-      if (hasResponse() != other.hasResponse()) return false;
-      if (hasResponse()) {
-        if (!getResponse()
-            .equals(other.getResponse())) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + type_;
-      if (hasRequest()) {
-        hash = (37 * hash) + REQUEST_FIELD_NUMBER;
-        hash = (53 * hash) + getRequest().hashCode();
-      }
-      if (hasResponse()) {
-        hash = (37 * hash) + RESPONSE_FIELD_NUMBER;
-        hash = (53 * hash) + getResponse().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
+    /**
+     * <code>.FetchDataResponse response = 3;</code>
+     */
+    private void clearResponse() {  response_ = null;
+      
     }
 
     public static BrowserData.WrapperMessage parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.WrapperMessage parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.WrapperMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.WrapperMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.WrapperMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
     }
     public static BrowserData.WrapperMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
     }
     public static BrowserData.WrapperMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
     }
     public static BrowserData.WrapperMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
     }
     public static BrowserData.WrapperMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
     public static BrowserData.WrapperMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
     public static BrowserData.WrapperMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
     }
     public static BrowserData.WrapperMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
     }
 
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
     public static Builder newBuilder(BrowserData.WrapperMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * <pre>
      * Wrapper message to differentiate between request and response
@@ -3689,221 +2433,32 @@ public final class BrowserData {
      * Protobuf type {@code WrapperMessage}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          BrowserData.WrapperMessage, Builder> implements
         // @@protoc_insertion_point(builder_implements:WrapperMessage)
         BrowserData.WrapperMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return BrowserData.internal_static_WrapperMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return BrowserData.internal_static_WrapperMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                BrowserData.WrapperMessage.class, BrowserData.WrapperMessage.Builder.class);
-      }
-
       // Construct using BrowserData.WrapperMessage.newBuilder()
       private Builder() {
-
+        super(DEFAULT_INSTANCE);
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
 
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        type_ = 0;
-
-        if (requestBuilder_ == null) {
-          request_ = null;
-        } else {
-          request_ = null;
-          requestBuilder_ = null;
-        }
-        if (responseBuilder_ == null) {
-          response_ = null;
-        } else {
-          response_ = null;
-          responseBuilder_ = null;
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return BrowserData.internal_static_WrapperMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public BrowserData.WrapperMessage getDefaultInstanceForType() {
-        return BrowserData.WrapperMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public BrowserData.WrapperMessage build() {
-        BrowserData.WrapperMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public BrowserData.WrapperMessage buildPartial() {
-        BrowserData.WrapperMessage result = new BrowserData.WrapperMessage(this);
-        result.type_ = type_;
-        if (requestBuilder_ == null) {
-          result.request_ = request_;
-        } else {
-          result.request_ = requestBuilder_.build();
-        }
-        if (responseBuilder_ == null) {
-          result.response_ = response_;
-        } else {
-          result.response_ = responseBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof BrowserData.WrapperMessage) {
-          return mergeFrom((BrowserData.WrapperMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(BrowserData.WrapperMessage other) {
-        if (other == BrowserData.WrapperMessage.getDefaultInstance()) return this;
-        if (other.type_ != 0) {
-          setTypeValue(other.getTypeValue());
-        }
-        if (other.hasRequest()) {
-          mergeRequest(other.getRequest());
-        }
-        if (other.hasResponse()) {
-          mergeResponse(other.getResponse());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                type_ = input.readEnum();
-
-                break;
-              } // case 8
-              case 18: {
-                input.readMessage(
-                    getRequestFieldBuilder().getBuilder(),
-                    extensionRegistry);
-
-                break;
-              } // case 18
-              case 26: {
-                input.readMessage(
-                    getResponseFieldBuilder().getBuilder(),
-                    extensionRegistry);
-
-                break;
-              } // case 26
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-
-      private int type_ = 0;
       /**
        * <code>.WrapperMessage.MessageType type = 1;</code>
        * @return The enum numeric value on the wire for type.
        */
-      @java.lang.Override public int getTypeValue() {
-        return type_;
+      @java.lang.Override
+      public int getTypeValue() {
+        return instance.getTypeValue();
       }
       /**
        * <code>.WrapperMessage.MessageType type = 1;</code>
-       * @param value The enum numeric value on the wire for type to set.
+       * @param value The type to set.
        * @return This builder for chaining.
        */
       public Builder setTypeValue(int value) {
-        
-        type_ = value;
-        onChanged();
+        copyOnWrite();
+        instance.setTypeValue(value);
         return this;
       }
       /**
@@ -3912,22 +2467,16 @@ public final class BrowserData {
        */
       @java.lang.Override
       public BrowserData.WrapperMessage.MessageType getType() {
-        @SuppressWarnings("deprecation")
-        BrowserData.WrapperMessage.MessageType result = BrowserData.WrapperMessage.MessageType.valueOf(type_);
-        return result == null ? BrowserData.WrapperMessage.MessageType.UNRECOGNIZED : result;
+        return instance.getType();
       }
       /**
        * <code>.WrapperMessage.MessageType type = 1;</code>
-       * @param value The type to set.
+       * @param value The enum numeric value on the wire for type to set.
        * @return This builder for chaining.
        */
       public Builder setType(BrowserData.WrapperMessage.MessageType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        type_ = value.getNumber();
-        onChanged();
+        copyOnWrite();
+        instance.setType(value);
         return this;
       }
       /**
@@ -3935,398 +2484,184 @@ public final class BrowserData {
        * @return This builder for chaining.
        */
       public Builder clearType() {
-        
-        type_ = 0;
-        onChanged();
+        copyOnWrite();
+        instance.clearType();
         return this;
       }
 
-      private BrowserData.FetchDataRequest request_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          BrowserData.FetchDataRequest, BrowserData.FetchDataRequest.Builder, BrowserData.FetchDataRequestOrBuilder> requestBuilder_;
       /**
        * <code>.FetchDataRequest request = 2;</code>
-       * @return Whether the request field is set.
        */
+      @java.lang.Override
       public boolean hasRequest() {
-        return requestBuilder_ != null || request_ != null;
+        return instance.hasRequest();
       }
       /**
        * <code>.FetchDataRequest request = 2;</code>
-       * @return The request.
        */
+      @java.lang.Override
       public BrowserData.FetchDataRequest getRequest() {
-        if (requestBuilder_ == null) {
-          return request_ == null ? BrowserData.FetchDataRequest.getDefaultInstance() : request_;
-        } else {
-          return requestBuilder_.getMessage();
-        }
+        return instance.getRequest();
       }
       /**
        * <code>.FetchDataRequest request = 2;</code>
        */
       public Builder setRequest(BrowserData.FetchDataRequest value) {
-        if (requestBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          request_ = value;
-          onChanged();
-        } else {
-          requestBuilder_.setMessage(value);
-        }
-
+        copyOnWrite();
+        instance.setRequest(value);
         return this;
-      }
+        }
       /**
        * <code>.FetchDataRequest request = 2;</code>
        */
       public Builder setRequest(
           BrowserData.FetchDataRequest.Builder builderForValue) {
-        if (requestBuilder_ == null) {
-          request_ = builderForValue.build();
-          onChanged();
-        } else {
-          requestBuilder_.setMessage(builderForValue.build());
-        }
-
+        copyOnWrite();
+        instance.setRequest(builderForValue.build());
         return this;
       }
       /**
        * <code>.FetchDataRequest request = 2;</code>
        */
       public Builder mergeRequest(BrowserData.FetchDataRequest value) {
-        if (requestBuilder_ == null) {
-          if (request_ != null) {
-            request_ =
-              BrowserData.FetchDataRequest.newBuilder(request_).mergeFrom(value).buildPartial();
-          } else {
-            request_ = value;
-          }
-          onChanged();
-        } else {
-          requestBuilder_.mergeFrom(value);
-        }
-
+        copyOnWrite();
+        instance.mergeRequest(value);
         return this;
       }
       /**
        * <code>.FetchDataRequest request = 2;</code>
        */
-      public Builder clearRequest() {
-        if (requestBuilder_ == null) {
-          request_ = null;
-          onChanged();
-        } else {
-          request_ = null;
-          requestBuilder_ = null;
-        }
-
+      public Builder clearRequest() {  copyOnWrite();
+        instance.clearRequest();
         return this;
       }
-      /**
-       * <code>.FetchDataRequest request = 2;</code>
-       */
-      public BrowserData.FetchDataRequest.Builder getRequestBuilder() {
-        
-        onChanged();
-        return getRequestFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.FetchDataRequest request = 2;</code>
-       */
-      public BrowserData.FetchDataRequestOrBuilder getRequestOrBuilder() {
-        if (requestBuilder_ != null) {
-          return requestBuilder_.getMessageOrBuilder();
-        } else {
-          return request_ == null ?
-              BrowserData.FetchDataRequest.getDefaultInstance() : request_;
-        }
-      }
-      /**
-       * <code>.FetchDataRequest request = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          BrowserData.FetchDataRequest, BrowserData.FetchDataRequest.Builder, BrowserData.FetchDataRequestOrBuilder> 
-          getRequestFieldBuilder() {
-        if (requestBuilder_ == null) {
-          requestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              BrowserData.FetchDataRequest, BrowserData.FetchDataRequest.Builder, BrowserData.FetchDataRequestOrBuilder>(
-                  getRequest(),
-                  getParentForChildren(),
-                  isClean());
-          request_ = null;
-        }
-        return requestBuilder_;
-      }
 
-      private BrowserData.FetchDataResponse response_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          BrowserData.FetchDataResponse, BrowserData.FetchDataResponse.Builder, BrowserData.FetchDataResponseOrBuilder> responseBuilder_;
       /**
        * <code>.FetchDataResponse response = 3;</code>
-       * @return Whether the response field is set.
        */
+      @java.lang.Override
       public boolean hasResponse() {
-        return responseBuilder_ != null || response_ != null;
+        return instance.hasResponse();
       }
       /**
        * <code>.FetchDataResponse response = 3;</code>
-       * @return The response.
        */
+      @java.lang.Override
       public BrowserData.FetchDataResponse getResponse() {
-        if (responseBuilder_ == null) {
-          return response_ == null ? BrowserData.FetchDataResponse.getDefaultInstance() : response_;
-        } else {
-          return responseBuilder_.getMessage();
-        }
+        return instance.getResponse();
       }
       /**
        * <code>.FetchDataResponse response = 3;</code>
        */
       public Builder setResponse(BrowserData.FetchDataResponse value) {
-        if (responseBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          response_ = value;
-          onChanged();
-        } else {
-          responseBuilder_.setMessage(value);
-        }
-
+        copyOnWrite();
+        instance.setResponse(value);
         return this;
-      }
+        }
       /**
        * <code>.FetchDataResponse response = 3;</code>
        */
       public Builder setResponse(
           BrowserData.FetchDataResponse.Builder builderForValue) {
-        if (responseBuilder_ == null) {
-          response_ = builderForValue.build();
-          onChanged();
-        } else {
-          responseBuilder_.setMessage(builderForValue.build());
-        }
-
+        copyOnWrite();
+        instance.setResponse(builderForValue.build());
         return this;
       }
       /**
        * <code>.FetchDataResponse response = 3;</code>
        */
       public Builder mergeResponse(BrowserData.FetchDataResponse value) {
-        if (responseBuilder_ == null) {
-          if (response_ != null) {
-            response_ =
-              BrowserData.FetchDataResponse.newBuilder(response_).mergeFrom(value).buildPartial();
-          } else {
-            response_ = value;
-          }
-          onChanged();
-        } else {
-          responseBuilder_.mergeFrom(value);
-        }
-
+        copyOnWrite();
+        instance.mergeResponse(value);
         return this;
       }
       /**
        * <code>.FetchDataResponse response = 3;</code>
        */
-      public Builder clearResponse() {
-        if (responseBuilder_ == null) {
-          response_ = null;
-          onChanged();
-        } else {
-          response_ = null;
-          responseBuilder_ = null;
-        }
-
+      public Builder clearResponse() {  copyOnWrite();
+        instance.clearResponse();
         return this;
       }
-      /**
-       * <code>.FetchDataResponse response = 3;</code>
-       */
-      public BrowserData.FetchDataResponse.Builder getResponseBuilder() {
-        
-        onChanged();
-        return getResponseFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.FetchDataResponse response = 3;</code>
-       */
-      public BrowserData.FetchDataResponseOrBuilder getResponseOrBuilder() {
-        if (responseBuilder_ != null) {
-          return responseBuilder_.getMessageOrBuilder();
-        } else {
-          return response_ == null ?
-              BrowserData.FetchDataResponse.getDefaultInstance() : response_;
-        }
-      }
-      /**
-       * <code>.FetchDataResponse response = 3;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          BrowserData.FetchDataResponse, BrowserData.FetchDataResponse.Builder, BrowserData.FetchDataResponseOrBuilder> 
-          getResponseFieldBuilder() {
-        if (responseBuilder_ == null) {
-          responseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              BrowserData.FetchDataResponse, BrowserData.FetchDataResponse.Builder, BrowserData.FetchDataResponseOrBuilder>(
-                  getResponse(),
-                  getParentForChildren(),
-                  isClean());
-          response_ = null;
-        }
-        return responseBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:WrapperMessage)
     }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new BrowserData.WrapperMessage();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "type_",
+              "request_",
+              "response_",
+            };
+            java.lang.String info =
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\f\u0002\t\u0003" +
+                "\t";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<BrowserData.WrapperMessage> parser = PARSER;
+          if (parser == null) {
+            synchronized (BrowserData.WrapperMessage.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<BrowserData.WrapperMessage>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
 
     // @@protoc_insertion_point(class_scope:WrapperMessage)
     private static final BrowserData.WrapperMessage DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new BrowserData.WrapperMessage();
+      WrapperMessage defaultInstance = new WrapperMessage();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        WrapperMessage.class, defaultInstance);
     }
 
     public static BrowserData.WrapperMessage getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<WrapperMessage>
-        PARSER = new com.google.protobuf.AbstractParser<WrapperMessage>() {
-      @java.lang.Override
-      public WrapperMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
+    private static volatile com.google.protobuf.Parser<WrapperMessage> PARSER;
 
     public static com.google.protobuf.Parser<WrapperMessage> parser() {
-      return PARSER;
+      return DEFAULT_INSTANCE.getParserForType();
     }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<WrapperMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public BrowserData.WrapperMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
   }
 
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ActionCodeInject_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ActionCodeInject_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_FetchDataRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_FetchDataRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_FetchDataResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_FetchDataResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ActionResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ActionResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_WrapperMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_WrapperMessage_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
   static {
-    java.lang.String[] descriptorData = {
-      "\n\022browser_data.proto\"4\n\020ActionCodeInject" +
-      "\022 \n\013action_code\030\001 \001(\0162\013.ActionCode\"q\n\020Fe" +
-      "tchDataRequest\022\025\n\rfetch_history\030\001 \001(\010\022\027\n" +
-      "\017fetch_bookmarks\030\002 \001(\010\022-\n\022action_code_in" +
-      "ject\030\003 \001(\0132\021.ActionCodeInject\"a\n\021FetchDa" +
-      "taResponse\022\017\n\007history\030\001 \001(\t\022\021\n\tbookmarks" +
-      "\030\002 \001(\t\022(\n\017action_response\030\003 \001(\0132\017.Action" +
-      "Response\"6\n\016ActionResponse\022\023\n\013status_cod" +
-      "e\030\001 \001(\005\022\017\n\007message\030\002 \001(\t\"\257\001\n\016WrapperMess" +
-      "age\022)\n\004type\030\001 \001(\0162\033.WrapperMessage.Messa" +
-      "geType\022\"\n\007request\030\002 \001(\0132\021.FetchDataReque" +
-      "st\022$\n\010response\030\003 \001(\0132\022.FetchDataResponse" +
-      "\"(\n\013MessageType\022\013\n\007REQUEST\020\000\022\014\n\010RESPONSE" +
-      "\020\001*\"\n\nActionCode\022\024\n\020OPEN_CINEMA_MODE\020\0002H" +
-      "\n\022BrowserDataService\0222\n\tFetchData\022\021.Fetc" +
-      "hDataRequest\032\022.FetchDataResponseb\006proto3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_ActionCodeInject_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_ActionCodeInject_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ActionCodeInject_descriptor,
-        new java.lang.String[] { "ActionCode", });
-    internal_static_FetchDataRequest_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_FetchDataRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_FetchDataRequest_descriptor,
-        new java.lang.String[] { "FetchHistory", "FetchBookmarks", "ActionCodeInject", });
-    internal_static_FetchDataResponse_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_FetchDataResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_FetchDataResponse_descriptor,
-        new java.lang.String[] { "History", "Bookmarks", "ActionResponse", });
-    internal_static_ActionResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_ActionResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ActionResponse_descriptor,
-        new java.lang.String[] { "StatusCode", "Message", });
-    internal_static_WrapperMessage_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_WrapperMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_WrapperMessage_descriptor,
-        new java.lang.String[] { "Type", "Request", "Response", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
